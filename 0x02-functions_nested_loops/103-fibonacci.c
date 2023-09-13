@@ -15,7 +15,7 @@ void fibonacci(void)
     sum = 0;
 	printf("1, 2, ");
 
-	while (c <= 4,000,000)
+	while (c <= 4000000)
 	{
 		b = c;
         c += a;
@@ -26,7 +26,7 @@ void fibonacci(void)
             sum += c;
         }
 	}
-    printf("%d", sum);
+    printf("%ld", sum);
 }
 
 /**
