@@ -8,7 +8,7 @@
 
 void fibonacci(void)
 {
-	long long int a, b, c, sum;
+	long int a, b, c, sum;
 
     c = 2;
 	a = 1;
