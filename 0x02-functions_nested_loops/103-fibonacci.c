@@ -1,19 +1,19 @@
 #include <stdio.h>
 
 /**
- *fibonacci - prints out the first 50 fibonacci numbers
+ *fibonacciSM - prints out the sum of all even fibonacci
+ *numbers below 4,000,000
  *
  *Return: void
  */
 
-void fibonacci(void)
+void fibonacciSM(void)
 {
 	long int a, b, c, sum;
 
     c = 2;
 	a = 1;
     sum = 0;
-	printf("1, 2, ");
 
 	while (c <= 4000000)
 	{
@@ -30,13 +30,13 @@ void fibonacci(void)
 }
 
 /**
- *main - calls fibonacci
+ *main - calls fibonacciSM
  *
  *Return: 0
  */
 
 int main(void)
 {
-	fibonacci();
+	fibonacciSM();
 	return (0);
 }
