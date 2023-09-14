@@ -13,7 +13,7 @@ void fibonacciSM(void)
 
 	c = 2;
 	a = 1;
-	sum = 1;
+	sum = 3;
 
 	while (c <= 4000000)
 	{
