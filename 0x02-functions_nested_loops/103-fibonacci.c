@@ -13,18 +13,18 @@ void fibonacciSM(void)
 
 	c = 2;
 	a = 1;
-	sum = 3;
+	sum = 0;
 
 	while (c <= 4000000)
 	{
-		b = c;
-		c += a;
-		a = b;
-
 		if (c % 2 == 0)
 		{
 			sum += c;
 		}
+
+		b = c;
+		c += a;
+		a = b;
 	}
 	printf("%ld\n", sum);
 }
