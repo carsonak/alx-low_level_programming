@@ -14,7 +14,7 @@ void fibonacci(void)
 	a = 1;
 	printf("%ld, %ld", a, c);
 
-	for (i = 0; i < 97; i++)
+	for (i = 0; i < 98; i++)
 	{
 		b = c;
 		c += a;
