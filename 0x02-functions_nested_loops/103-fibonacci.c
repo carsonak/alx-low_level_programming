@@ -11,22 +11,22 @@ void fibonacciSM(void)
 {
 	long int a, b, c, sum;
 
-    c = 2;
+	c = 2;
 	a = 1;
-    sum = 0;
+	sum = 1;
 
 	while (c <= 4000000)
 	{
 		b = c;
-        c += a;
+		c += a;
 		a = b;
 
 		if (c % 2 == 0)
-        {
-            sum += c;
-        }
+		{
+			sum += c;
+		}
 	}
-    printf("%ld\n", sum);
+	printf("%ld\n", sum);
 }
 
 /**
