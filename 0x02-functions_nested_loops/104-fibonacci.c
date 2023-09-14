@@ -1,12 +1,12 @@
 #include <stdio.h>
 
 /**
- *fibonacci - prints out the first 50 fibonacci numbers
+ *fibonacci98 - prints out the first 50 fibonacci numbers
  *
  *Return: void
  */
 
-void fibonacci(void)
+void fibonacci98(void)
 {
 	unsigned long int i, a, b, c;
 
@@ -33,6 +33,6 @@ void fibonacci(void)
 
 int main(void)
 {
-	fibonacci();
+	fibonacci98();
 	return (0);
 }
