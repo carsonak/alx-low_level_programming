@@ -26,7 +26,7 @@ void fibonacciSM(void)
             sum += c;
         }
 	}
-    printf("%ld", sum);
+    printf("%ld\n", sum);
 }
 
 /**
