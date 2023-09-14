@@ -8,23 +8,21 @@
 
 void fibonacci(void)
 {
-	unsigned long int i, a, b, sum;
+	unsigned long int i, a, b, c;
 
-	sum = 2;
+	c = 2;
 	a = 1;
-	printf("1, 2, ");
+	printf("%ld, %ld", a, c);
 
 	for (i = 0; i < 97; i++)
 	{
-		b = sum;
-		sum += a;
+		b = c;
+		c += a;
 		a = b;
 
-		if (i < 96)
-			printf("%ld, ", sum);
-		else if (i == 96)
-			printf("%ld\n", sum);
+		printf(", %ld", c);
 	}
+	printf("\n");
 }
 
 /**
