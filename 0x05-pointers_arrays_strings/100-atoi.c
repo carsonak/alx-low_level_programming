@@ -29,9 +29,9 @@ int _atoi(char *s)
 	{
 		/*Checks if the character following an integer is still an int*/
 		if (*(s + (i - 1)) >= '0' && *(s + (i - 1)) <= '9' &&
-		    !(*(s + i) >= '0' && *(s + i) <= '9'))
+			!(*(s + i) >= '0' && *(s + i) <= '9'))
 			break;
-		else if (a == 214748364 && *(s + i) >= 8)
+		else if (a == 214748364 && *(s + i) >= 7)
 			break;
 
 		if (*(s + i) >= '0' && *(s + i) <= '9')
@@ -42,9 +42,9 @@ int _atoi(char *s)
 		a = -a;
 
 	/*Checks for INT_MAX and INT_MIN*/
-	if (a == -214748364 && *(s + i) == 8)
+	if (a == -214748364 && *(s + i) >= 8)
 		return (INT_MIN);
-	else if (a == 214748364 && *(s + i) == 7)
+	else if (a == 214748364 && *(s + i) >= 7)
 		return (INT_MAX);
 	else
 		return (a);
