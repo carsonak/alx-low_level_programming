@@ -24,7 +24,6 @@ int _atoi(char *s)
 		else if (*(s + i) == '-')
 			signN++;
 	}
-
 	/*Checks for integers in the string*/
 	for (i = 0; i <= sLen; i++)
 	{
@@ -32,19 +31,21 @@ int _atoi(char *s)
 		if (*(s + (i - 1)) >= '0' && *(s + (i - 1)) <= '9' &&
 		    !(*(s + i) >= '0' && *(s + i) <= '9'))
 			break;
-		else if (a == 214748364 && *(s + i) == 8)
+		else if (a == 214748364 && *(s + i) >= 8)
 			break;
+
 		if (*(s + i) >= '0' && *(s + i) <= '9')
 			a = (a * 10) + (*(s + i) - '0');
 	}
-
 	/*Turns the number to a negative if the total "-" are odd*/
 	if (signN % 2 != 0 && signN != 0)
-	{
 		a = -a;
-	}
+
+	/*Checks for INT_MAX and INT_MIN*/
 	if (a == -214748364 && *(s + i) == 8)
-		return ((a * 10) + 8);
+		return (INT_MIN);
+	else if (a == 214748364 && *(s + i) == 7)
+		return (INT_MAX);
 	else
 		return (a);
 }
