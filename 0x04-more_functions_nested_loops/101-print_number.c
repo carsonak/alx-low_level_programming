@@ -16,6 +16,9 @@ void print_number(int n)
 		num = -n;
 		_putchar('-');
 	}
+	else
+		num = n;
+
 	while (num / div > 9)
 	{
 		div *= 10;
