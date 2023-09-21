@@ -19,7 +19,7 @@ int main(void)
 	_putchar('\n');
 	print_number(INT_MIN);
 	_putchar('\n');
-	print_number(10458890);
+	print_number(310458890);
 	_putchar('\n');
 
 	return (0);
