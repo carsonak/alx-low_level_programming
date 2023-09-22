@@ -13,7 +13,7 @@ char *cap_string(char *a)
 	for (i = 0; a[i] != '\0'; i++)
 	{
 
-		if (wrdSep(a[i - 1]))
+		if (wrdSep(a[i - 1]) || a[i] == a[0])
 		{
 			if (a[i] >= 'a' && a[i] <= 'z')
 			{
