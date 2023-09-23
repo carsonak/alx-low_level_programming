@@ -2,30 +2,30 @@
 
 /**
  *rot13 - rot13 cypher
- *@a: string to be encrypted.
+ *@aStr: string to be encrypted.
  *
  * Return: pointer to converted string
  */
-char *rot13(char *a)
+char *rot13(char *aStr)
 {
 	int i;
 
-	for (i = 0; a[i] != '\0'; i++)
+	for (i = 0; aStr[i] != '\0'; i++)
 	{
-		while ((a[i] >= 'A' && a[i] <= 'Z') || (a[i] >= 'a' && a[i] <= 'z'))
+		while ((aStr[i] >= 'A' && aStr[i] <= 'Z') ||
+			   (aStr[i] >= 'a' && aStr[i] <= 'z'))
 		{
-			if ((a[i] >= 'N' && a[i] <= 'Z') || (a[i] >= 'n' && a[i] <= 'z'))
+			if ((aStr[i] >= 'A' && aStr[i] <= 'M') ||
+				(aStr[i] >= 'a' && aStr[i] <= 'm'))
 			{
-				a[i] -= 13;
-			}
-			else
-			{
-				a[i] += 13;
+				aStr[i] += 13;
+				break;
 			}
 
+			aStr[i] -= 13;
 			i++;
 		}
 	}
 
-	return (a);
+	return (aStr);
 }

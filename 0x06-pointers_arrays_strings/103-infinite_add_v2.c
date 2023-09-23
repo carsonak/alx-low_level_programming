@@ -22,7 +22,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	nm2 = 0;
 	for (i = 0; n2[i] >= '0' && n2[i] <= '9'; i++)
 	{
-		nm2 = (nm2 * 10) + (n2[i] - 48);
+		nm2 = (nm2 * 10) + (n2[i] - '0');
 	}
 
 	sum = nm1 + nm2;
