@@ -1,0 +1,1 @@
+This folder contains exercises on C - Even more pointers, arrays and strings.
