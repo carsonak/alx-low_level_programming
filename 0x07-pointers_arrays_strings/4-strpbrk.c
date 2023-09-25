@@ -6,7 +6,8 @@
  *@s: String to be checked
  *@accept: the check string
  *
- *Return: a pointer to the byte in s that matches any in accept or NULL if none.
+ *Return: a pointer to the byte in s that matches any in accept or
+ *NULL if none.
  */
 
 char *_strpbrk(char *s, char *accept)
