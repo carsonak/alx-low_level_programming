@@ -12,10 +12,35 @@ int main(void)
 	char *f;
 
 	f = _strchr(s, 'l');
-
 	if (f != NULL)
 	{
 		printf("%s\n", f);
+	}
+	else
+	{
+		printf("Error");
+	}
+
+	s = "Hello";
+	f = _strchr(s, 'p');
+	if (f != NULL)
+	{
+		printf("%s\n", f);
+	}
+	else
+	{
+		printf("Error\n");
+	}
+
+	s = "";
+	f = _strchr(s, 'l');
+	if (f != NULL)
+	{
+		printf("%s\n", f);
+	}
+	else
+	{
+		printf("Error\n");
 	}
 	return (0);
 }
