@@ -42,5 +42,16 @@ int main(void)
 	{
 		printf("Error\n");
 	}
+
+	s = "Henlo";
+	f = _strchr(s, '\0');
+	if (f != NULL)
+	{
+		printf("%s\n", f);
+	}
+	else
+	{
+		printf("Error\n");
+	}
 	return (0);
 }
