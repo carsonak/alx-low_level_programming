@@ -10,12 +10,24 @@
 
 unsigned int _strspn(char *s, char *accept)
 {
-	int i, j;
-	unsigned int b = 0;
+	unsigned long int i, j;
+	unsigned int b, a = 0;
 
-	for (i = 0; i < strlen(accept); i++)
-		for (j = 0; j < strlen(s); j++)
-			if (accept[i] == s[j])
-				b++;
-	return (b);
+	for (i = 0; i < strlen(s); i++)
+	{
+		b = a;
+		for (j = 0; j < strlen(accept); j++)
+		{
+			if (accept[j] == s[i])
+			{
+				a++;
+			}
+		}
+		if (accept[j] == '\0' && a - b == 0)
+		{
+			break;
+		}
+	}
+
+	return (a);
 }

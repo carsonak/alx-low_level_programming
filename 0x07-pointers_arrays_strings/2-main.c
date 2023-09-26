@@ -8,10 +8,10 @@
  */
 int main(void)
 {
-	char *s = "hello";
+	char *s = "";
 	char *f;
 
-	f = _strchr(s, 'l');
+	f = _strchr(s, '\0');
 	if (f != NULL)
 	{
 		printf("%s\n", f);
@@ -32,8 +32,8 @@ int main(void)
 		printf("Error\n");
 	}
 
-	s = "";
-	f = _strchr(s, 'l');
+	s = "helLo";
+	f = _strchr(s, 'L');
 	if (f != NULL)
 	{
 		printf("%s\n", f);
