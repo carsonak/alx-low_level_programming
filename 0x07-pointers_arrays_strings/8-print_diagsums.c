@@ -8,33 +8,39 @@
 
 void print_diagsums(int *a, int size)
 {
-	int i;
+	int index, j, mul;
 	long int sum1, sum2, len;
 
-	a = &a[0];
-	len = (size - 1) * (size - 1);
+	len = size * size;
 	sum1 = 0;
-	for (i = 0; i <= len; i++)
+	index = 0;
+	j = size - 1;
+	mul = 1;
+	while (index < len)
 	{
-		printf("%d, ", *(a + i));
-		if (*(a + i) % size == 0)
+		if (index == (size * mul) - 1)
 		{
-			sum1 += *(a + i);
+			sum1 += a[index - j];
+			j--;
+			mul++;
 		}
+		index++;
 	}
-	putchar('\n');
 
 	sum2 = 0;
-
-	for (i = 0; i <= len; i++)
+	index = 0;
+	j = 0;
+	mul = 1;
+	while (index < len)
 	{
-		printf("%d, ", *(a + i));
-		if (*(a + i) % size == 0)
+		if (index == (size * mul) - 1)
 		{
-			sum2 += *(a + i + i);
+			sum2 += a[index - j];
+			j++;
+			mul++;
 		}
+		index++;
 	}
-	putchar('\n');
 
 	printf("%ld, %ld\n", sum1, sum2);
 }
