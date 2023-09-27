@@ -21,4 +21,9 @@ int look_sqrt(int b, int div);
 int is_prime_number(int n);
 int least_div(int b, int div);
 
+int is_palindrome(char *s);
+int check_plndrm(char *str, int a, int b);
+
+int wildcmp(char *s1, char *s2);
+
 #endif /*ENDIF*/
