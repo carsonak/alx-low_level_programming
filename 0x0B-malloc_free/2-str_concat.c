@@ -12,56 +12,39 @@ char *str_concat(char *s1, char *s2)
 	char *bGstr;
 	unsigned long int i;
 
-	if (s1 == NULL)
+	if (s1 == NULL && s2 == NULL)
+		return (NULL);
+	else if (s1 == NULL)
 	{
-		bGstr = malloc(sizeof(*s2) * strlen(s2));
-
+		bGstr = malloc((sizeof(*s2) * strlen(s2)) + 1);
 		if (bGstr == NULL)
-		{
 			return (NULL);
-		}
 
 		for (i = 0; i <= strlen(s2); i++)
 			bGstr[i] = s2[i];
 	}
 	else if (s2 == NULL)
 	{
-		bGstr = malloc(sizeof(*s1) * strlen(s1));
-
+		bGstr = malloc((sizeof(*s1) * strlen(s1)) + 1);
 		if (bGstr == NULL)
-		{
 			return (NULL);
-		}
 
 		for (i = 0; i <= strlen(s2); i++)
 			bGstr[i] = s1[i];
 	}
 	else
 	{
-		bGstr = malloc(sizeof(*s1) * (strlen(s1) + strlen(s2) - 1));
-
+		bGstr = malloc((sizeof(*s1) * (strlen(s1) + strlen(s2))) + 1);
 		if (bGstr == NULL)
-		{
 			return (NULL);
-		}
 
-		i = 0;
-		while (*s1 != '\0')
-		{
+		for (i = 0; *s1 != '\0'; i++, s1++)
 			bGstr[i] = *s1;
-			i++;
-			s1++;
-		}
 
-		while (*s2 != '\0')
-		{
+		for (; *s2 != '\0'; i++, s2++)
 			bGstr[i] = *s2;
-			i++;
-			s2++;
-		}
 
 		bGstr[i] = '\0';
 	}
-
 	return (bGstr);
 }

@@ -13,25 +13,24 @@ int **alloc_grid(int width, int height)
 	int h, w, **grd;
 
 	if (width < 1 || height < 1)
-	{
 		return (NULL);
-	}
 
 	/**
 	 * Adds slots of pointer size to the 1st degree pointer.
 	 * This means all the slots now become pointers.
 	 */
 	grd = malloc(sizeof(*grd) * height);
+	if (grd == NULL)
+		return (NULL);
+
 	/*Adds slots of int size to the previously created pointers*/
 	for (h = 0; h < height; h++)
 	{
 		grd[h] = malloc(sizeof(**grd) * width);
 	}
 
-	if (grd == NULL || *grd == NULL)
-	{
+	if (*grd == NULL)
 		return (NULL);
-	}
 
 	h = 0;
 	while (h < height)
