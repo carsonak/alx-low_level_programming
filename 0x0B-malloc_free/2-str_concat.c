@@ -9,11 +9,11 @@
  */
 char *str_concat(char *s1, char *s2)
 {
-	char *bGstr;
+	char *bGstr = "";
 	unsigned long int i;
 
 	if (s1 == NULL && s2 == NULL)
-		return (NULL);
+		return (bGstr);
 	else if (s1 == NULL)
 	{
 		bGstr = malloc((sizeof(*s2) * strlen(s2)) + 1);
@@ -40,7 +40,6 @@ char *str_concat(char *s1, char *s2)
 
 		for (i = 0; *s1 != '\0'; i++, s1++)
 			bGstr[i] = *s1;
-
 		for (; *s2 != '\0'; i++, s2++)
 			bGstr[i] = *s2;
 
