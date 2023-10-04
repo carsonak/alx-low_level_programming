@@ -25,11 +25,9 @@ int **alloc_grid(int width, int height)
 
 	/*Adds slots of int size to the previously created pointers*/
 	for (h = 0; h < height; h++)
-	{
 		grd[h] = malloc(sizeof(**grd) * width);
-	}
 
-	if (grd[h - 1] == NULL)
+	if (*grd == NULL)
 		return (NULL);
 
 	h = 0;
