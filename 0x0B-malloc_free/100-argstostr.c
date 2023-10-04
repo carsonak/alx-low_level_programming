@@ -10,30 +10,51 @@
 
 char *argstostr(int ac, char **av)
 {
-	char *str;
-	int i, j;
-	unsigned long int len = 0;
+	char *str = "";
+	int i;
 
 	if (ac == 0 || av == NULL)
 		return (NULL);
 
-	for (i = 0; i < ac; i++)
-	{
-		if (strlen(av[i]) > len)
-			len = strlen(av[i]) + 1;
-	}
-
-	str = malloc(sizeof(**av) * len + 1);
+	str = malloc(sizeof(*av) * ac + 1);
 	if (str == NULL)
 		return (NULL);
 
-	for (i = 0; i < ac; i++)
+	for (i = 1; i < ac; i++)
 	{
-		for (j = 0; av[i][j] != '\0'; j++, str++)
-			*str = av[i][j];
-
-		*str = '\n';
+		str = _strcat(str, av[i]);
 	}
 
 	return (str);
+}
+
+/**
+ *_strcat - Appends a string to another string.
+ *@dest: string to be extended.
+ *@src: string to be appended.
+ *
+ * Return: pointer to final string.
+ */
+
+char *_strcat(char *dest, char *src)
+{
+	unsigned long int i, j;
+
+	i = 0;
+	while (dest[i] != '\0')
+	{
+		i++;
+	}
+
+	j = 0;
+	while (j < strlen(src))
+	{
+		dest[i] = src[j];
+		i++;
+		j++;
+	}
+	dest[i] = '\n';
+	dest[i + 1] = '\0';
+
+	return (dest);
 }
