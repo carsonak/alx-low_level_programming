@@ -29,7 +29,7 @@ char *str_concat(char *s1, char *s2)
 		if (bGstr == NULL)
 			return (NULL);
 
-		for (i = 0; i <= strlen(s2); i++)
+		for (i = 0; i <= strlen(s1); i++)
 			bGstr[i] = s1[i];
 	}
 	else
