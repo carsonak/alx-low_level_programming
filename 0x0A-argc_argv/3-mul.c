@@ -1,7 +1,8 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 /**
- * main - Prints all arguments it receives.
+ * main - gets the multiple of two numbers
  * @argc: The number of arguments supplied to the program.
  * @argv: An array of pointers to the arguments.
  *
@@ -9,10 +10,15 @@
  */
 int main(int argc, char *argv[])
 {
-	int arg;
-
-	for (arg = 0; arg < argc; arg++)
-		printf("%s\n", argv[arg]);
+	if (argc == 3)
+	{
+		printf("%d\n", (atoi(argv[1]) * atoi(argv[2])));
+	}
+	else
+	{
+		printf("Error\n");
+		return (1);
+	}
 
 	return (0);
 }
