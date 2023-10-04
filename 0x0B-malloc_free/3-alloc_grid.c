@@ -21,14 +21,21 @@ int **alloc_grid(int width, int height)
 	 */
 	grd = malloc(sizeof(*grd) * height);
 	if (grd == NULL)
+	{
+		free(grd);
 		return (NULL);
+	}
 
 	/*Adds slots of int size to the previously created pointers*/
 	for (h = 0; h < height; h++)
+	{
 		grd[h] = malloc(sizeof(**grd) * width);
-
-	if (*grd == NULL)
-		return (NULL);
+		if (grd[h] == NULL)
+		{
+			free_grid(grd, h);
+			return (NULL);
+		}
+	}
 
 	h = 0;
 	while (h < height)
@@ -42,4 +49,22 @@ int **alloc_grid(int width, int height)
 		h++;
 	}
 	return (grd);
+}
+
+/**
+ * free_grid - frees memory of a 2D array
+ * @grid: pointer to an array of pointers (the 2d array)
+ * @height: number of rows in the Array.
+ */
+
+void free_grid(int **grid, int height)
+{
+	int i;
+
+	for (i = 0; i < height; i++)
+	{
+		free(grid[i]);
+	}
+
+	free(grid);
 }
