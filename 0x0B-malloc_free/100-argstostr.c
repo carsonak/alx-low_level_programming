@@ -10,7 +10,7 @@
 
 char *argstostr(int ac, char **av)
 {
-	char *str = "";
+	char *arg, *str = "";
 	int i;
 
 	if (ac == 0 || av == NULL)
@@ -22,7 +22,11 @@ char *argstostr(int ac, char **av)
 
 	for (i = 1; i < ac; i++)
 	{
-		str = _strcat(str, av[i]);
+		/*printf("Loop %d\n", i);*/
+		arg = _strcat(av[i], "\n");
+
+		/*printf("Loop %d: Part2\n", i);*/
+		str = _strcat(str, arg);
 	}
 
 	return (str);
@@ -46,15 +50,17 @@ char *_strcat(char *dest, char *src)
 		i++;
 	}
 
+	/*printf("%s", dest);*/
+
 	j = 0;
-	while (j < strlen(src))
+	while (j <= strlen(src))
 	{
 		dest[i] = src[j];
 		i++;
 		j++;
 	}
-	dest[i] = '\n';
-	dest[i + 1] = '\0';
+
+	/*printf(" : %s", dest);*/
 
 	return (dest);
 }
