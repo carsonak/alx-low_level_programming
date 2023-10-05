@@ -12,35 +12,35 @@
 
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	char *bGstr = "";
+	char *bGstr;
 
-	if (s1 == NULL && s2 == NULL)
-		bGstr = malloc(sizeof(*bGstr));
-	else if (s1 == NULL)
-	{
-		bGstr = malloc(sizeof(s2));
-		if (bGstr == NULL)
-			return (NULL);
+	if (s1 == NULL)
+		s1 = "";
 
-		bGstr = _strncat(bGstr, s2, n);
-	}
-	else if (s2 == NULL)
+	if (s2 == NULL)
+		s2 = "";
+
+	if (n <= sizeof(s2))
 	{
-		bGstr = malloc(sizeof(s1));
+		bGstr = malloc(sizeof(s1) + n);
+
 		if (bGstr == NULL)
 			return (NULL);
 
 		bGstr = _strncat(bGstr, s1, sizeof(s1));
+		bGstr = _strncat(bGstr, s2, n);
 	}
 	else
 	{
-		bGstr = malloc(sizeof(s1) + (sizeof(*s2) * n));
+		bGstr = malloc(sizeof(s1) + sizeof(s2));
+
 		if (bGstr == NULL)
 			return (NULL);
 
 		bGstr = _strncat(bGstr, s1, sizeof(s1));
-		bGstr = _strncat(bGstr, s2, n);
+		bGstr = _strncat(bGstr, s2, sizeof(s2));
 	}
+
 	return (bGstr);
 }
 
