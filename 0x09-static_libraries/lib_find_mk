@@ -1,0 +1,47 @@
+#!/bin/bash
+
+# Define source directory, target directory, and compiler
+src_dir="/home/line/GitHub_Repositories/alx-low_level_programming"
+trgt_dir="/home/line/GitHub_Repositories/alx-low_level_programming/0x09-static_libraries"
+
+# Check if the target directory exists; create it if necessary
+if [[ ! -d "$trgt_dir" ]]; then
+	mkdir -p "$trgt_dir"
+	echo "Created target directory: $trgt_dir"
+fi
+
+# Find and copy the files to the target directory
+c_files=$(find "$src_dir" -type f \( -name "0-isupper.c" -o -name "0-memset.c" -o -name "0-strcat.c" -o -name "1-isdigit.c" -o -name "1-memcpy.c" -o -name "1-strncat.c" -o -name "100-atoi.c" -o -name "2-strchr.c" -o -name "2-strlen.c" -o -name "2-strncpy.c" -o -name "3-islower.c" -o -name "3-puts.c" -o -name "3-strcmp.c" -o -name "3-strspn.c" -o -name "4-isalpha.c" -o -name "4-strpbrk.c" -o -name "5-strstr.c" -o -name "6-abs.c" -o -name "9-strcpy.c" -o -name "_putchar.c" \))
+
+# Check for and handle errors during the copy operation
+for src_file in $c_files; do
+	if [[ ! -f "$src_file" ]]; then
+		echo "Error: Source file '$src_file' not found."
+		continue
+	fi
+	
+	cp "$src_file" "$trgt_dir"
+	if [[ $? -ne 0 ]]; then
+		echo "Error: Permission denied while copying '$src_file' to '$trgt_dir'."
+	fi
+done
+
+# Navigate to the target directory
+cd "$trgt_dir"
+
+# Compile the copied files into object files
+for src_file in $c_files; do
+	if [[ ! -f "$src_file" ]]; then
+		echo "Error: Source file '$src_file' not found."
+		continue
+	fi
+	
+	object_file="${src_file%.*}.o"
+	gcc -c "$src_file" -o "$object_file"
+	if [ $? -eq 0 ]; then
+		echo "Compiled $src_file to $object_file"
+		rm "$src_file"
+	else
+		echo "Error: Compilation of $src_file failed."
+	fi
+done
