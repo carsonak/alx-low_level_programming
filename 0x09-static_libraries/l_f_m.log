@@ -1,0 +1,64 @@
+Copied 1-isdigit.c to /home/line/GitHub_Repositories/alx-low_level_programming/0x09-static_libraries
+Copied 0-isupper.c to /home/line/GitHub_Repositories/alx-low_level_programming/0x09-static_libraries
+Copied _putchar.c to /home/line/GitHub_Repositories/alx-low_level_programming/0x09-static_libraries
+Copied 5-strstr.c to /home/line/GitHub_Repositories/alx-low_level_programming/0x09-static_libraries
+Copied 4-strpbrk.c to /home/line/GitHub_Repositories/alx-low_level_programming/0x09-static_libraries
+Copied 3-strspn.c to /home/line/GitHub_Repositories/alx-low_level_programming/0x09-static_libraries
+Copied 2-strchr.c to /home/line/GitHub_Repositories/alx-low_level_programming/0x09-static_libraries
+Copied 0-memset.c to /home/line/GitHub_Repositories/alx-low_level_programming/0x09-static_libraries
+Skipping duplicate file: _putchar.c
+Copied 1-memcpy.c to /home/line/GitHub_Repositories/alx-low_level_programming/0x09-static_libraries
+Copied 3-islower.c to /home/line/GitHub_Repositories/alx-low_level_programming/0x09-static_libraries
+Copied 6-abs.c to /home/line/GitHub_Repositories/alx-low_level_programming/0x09-static_libraries
+Copied 4-isalpha.c to /home/line/GitHub_Repositories/alx-low_level_programming/0x09-static_libraries
+Copied 100-atoi.c to /home/line/GitHub_Repositories/alx-low_level_programming/0x09-static_libraries
+Copied 2-strlen.c to /home/line/GitHub_Repositories/alx-low_level_programming/0x09-static_libraries
+Copied 3-puts.c to /home/line/GitHub_Repositories/alx-low_level_programming/0x09-static_libraries
+Copied 9-strcpy.c to /home/line/GitHub_Repositories/alx-low_level_programming/0x09-static_libraries
+Skipping duplicate file: _putchar.c
+Copied 3-strcmp.c to /home/line/GitHub_Repositories/alx-low_level_programming/0x09-static_libraries
+Copied 1-strncat.c to /home/line/GitHub_Repositories/alx-low_level_programming/0x09-static_libraries
+Copied 2-strncpy.c to /home/line/GitHub_Repositories/alx-low_level_programming/0x09-static_libraries
+Skipping duplicate file: _putchar.c
+Copied 0-strcat.c to /home/line/GitHub_Repositories/alx-low_level_programming/0x09-static_libraries
+Skipping duplicate file: _putchar.c
+Compiled 1-isdigit.c to 1-isdigit.o
+Compiled 0-isupper.c to 0-isupper.o
+Compiled _putchar.c to _putchar.o
+Compiled 5-strstr.c to 5-strstr.o
+Compiled 4-strpbrk.c to 4-strpbrk.o
+Compiled 3-strspn.c to 3-strspn.o
+Compiled 2-strchr.c to 2-strchr.o
+Compiled 0-memset.c to 0-memset.o
+Compiled 1-memcpy.c to 1-memcpy.o
+Compiled 3-islower.c to 3-islower.o
+Compiled 6-abs.c to 6-abs.o
+Compiled 4-isalpha.c to 4-isalpha.o
+Compiled 100-atoi.c to 100-atoi.o
+Compiled 2-strlen.c to 2-strlen.o
+Compiled 3-puts.c to 3-puts.o
+Compiled 9-strcpy.c to 9-strcpy.o
+Compiled 3-strcmp.c to 3-strcmp.o
+Compiled 1-strncat.c to 1-strncat.o
+Compiled 2-strncpy.c to 2-strncpy.o
+Compiled 0-strcat.c to 0-strcat.o
+Removed 1-isdigit.c
+Removed 0-isupper.c
+Removed _putchar.c
+Removed 5-strstr.c
+Removed 4-strpbrk.c
+Removed 3-strspn.c
+Removed 2-strchr.c
+Removed 0-memset.c
+Removed 1-memcpy.c
+Removed 3-islower.c
+Removed 6-abs.c
+Removed 4-isalpha.c
+Removed 100-atoi.c
+Removed 2-strlen.c
+Removed 3-puts.c
+Removed 9-strcpy.c
+Removed 3-strcmp.c
+Removed 1-strncat.c
+Removed 2-strncpy.c
+Removed 0-strcat.c

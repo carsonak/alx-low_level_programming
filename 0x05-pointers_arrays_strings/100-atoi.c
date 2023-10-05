@@ -46,6 +46,6 @@ int _atoi(char *s)
 		return (INT_MIN);
 	else if (a == 214748364 && *(s + i) >= 7)
 		return (INT_MAX);
-	else
-		return (a);
+
+	return (a);
 }
