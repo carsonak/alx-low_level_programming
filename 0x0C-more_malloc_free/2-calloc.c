@@ -11,6 +11,7 @@
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
 	void *mem;
+	int *setter;
 
 	if (nmemb < 1 || size < 1)
 		return (NULL);
@@ -19,7 +20,8 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	if (mem == NULL)
 		return (NULL);
 
-	_memset(mem, '\0', nmemb);
+	setter = mem;
+	_memset(setter, 0, nmemb);
 
 	return (mem);
 }
