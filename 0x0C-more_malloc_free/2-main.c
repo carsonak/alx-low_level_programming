@@ -7,7 +7,7 @@
  *
  * Return: Nothing.
  */
-void simple_print_buffer(int *buffer, unsigned int size)
+void simple_print_buffer(char *buffer, unsigned int size)
 {
 	unsigned int i;
 
@@ -35,16 +35,19 @@ void simple_print_buffer(int *buffer, unsigned int size)
  */
 int main(void)
 {
-	int *a;
+	char *a;
 	unsigned int nmemb;
+	unsigned int i;
 
-	nmemb = 50;
+	nmemb = 402;
 	a = _calloc(nmemb, sizeof(*a));
 	if (a == NULL)
 	{
 		printf("Failed\n");
 		return (1);
 	}
+	for (i = 0; i < nmemb; ++i)
+		a[i] = 98;
 	simple_print_buffer(a, nmemb);
 	free(a);
 	return (0);

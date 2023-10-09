@@ -11,7 +11,6 @@
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
 	void *mem;
-	char *setter;
 
 	if (nmemb < 1 || size < 1)
 		return (NULL);
@@ -20,17 +19,16 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	if (mem == NULL)
 		return (NULL);
 
-	setter = mem;
-	_memset(setter, 0, nmemb);
+	_memset(mem, '0', nmemb);
 
 	return (mem);
 }
 
 /**
  *_memset - fills a memory with a constant bite.
- *@s: pointer to the string
- *@b: the character to be used
- *@n: number of times the character will be added
+ *@s: pointer of tpye void to the string
+ *@b: ASCII of the character to be used
+ *@n: number of times the character will be repeated
  *
  *Return: pointer to the string
  */
@@ -38,11 +36,9 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 void *_memset(void *s, int b, unsigned int n)
 {
 	unsigned int i;
-	int *hold;
 
-	hold = s;
 	for (i = 0; i < n; i++)
-		hold[i] = b;
+		*((char *)(s) + i) = (char)b;
 
 	return (s);
 }
