@@ -19,8 +19,8 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	if (mem == NULL)
 		return (NULL);
 
-	/*_memset(mem, '0', nmemb, size);*/
-	memset((char *)mem, '0', nmemb);
+	/*memset((char *)mem, '0', nmemb);*/
+	_memset(mem, '0', nmemb, size);
 
 	return (mem);
 }
@@ -35,19 +35,12 @@ void *_calloc(unsigned int nmemb, unsigned int size)
  *Return: pointer to the string
  */
 
-void *_memset(void *str, int b, size_t n, size_t size)
+void *_memset(void *str, int b, unsigned int n, unsigned int size)
 {
-	size_t i, j;
+	unsigned int i;
 
 	for (i = 0; i < n; i++)
-	{
-		/*Fill one byte at a time, but advance the pointer by the desired size*/
-		/*to ensure proper alignment for the target data type.*/
-		for (j = 0; j < size; j++)
-		{
-			*((char *)(str) + j + (i * size)) = (char)b;
-		}
-	}
+		*((char *)(str) + (i * size)) = (char)b;
 
 	return (str);
 }
