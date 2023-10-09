@@ -11,7 +11,7 @@
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
 	void *mem;
-	int *setter;
+	char *setter;
 
 	if (nmemb < 1 || size < 1)
 		return (NULL);
