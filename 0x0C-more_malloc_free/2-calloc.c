@@ -30,7 +30,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
  *@str: pointer of tpye void to the string
  *@b: ASCII of the character to be used
  *@n: number of times the character will be repeated
- *@size: number of bytes to be skipped, to adapt to size of different types
+ *@size: bytes that determine data type.
  *
  *Return: pointer to the string
  */
@@ -40,7 +40,24 @@ void *_memset(void *str, int b, unsigned int n, unsigned int size)
 	unsigned int i;
 
 	for (i = 0; i < n; i++)
-		*((char *)(str) + (i * size)) = (char)b;
+	{
+		if (size == sizeof(int))
+		{
+			*((int *)(str) + i) = (char)b - '0';
+		}
+		else if (size == sizeof(char))
+		{
+			*((char *)(str) + i) = (char)b;
+		}
+		else if (size == sizeof(float))
+		{
+			*((float *)(str) + i) = (char)b - '0';
+		}
+		else if (size == sizeof(double))
+		{
+			*((double *)(str) + i) = (char)b - '0';
+		}
+	}
 
 	return (str);
 }
