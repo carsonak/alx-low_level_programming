@@ -36,10 +36,17 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 
 void *_memset(void *str, int b, size_t n, size_t size)
 {
-	unsigned int i;
+	size_t i, j;
 
 	for (i = 0; i < n; i++)
-		*((char *)(str) + (i * size)) = (char)b;
+	{
+		/*Fill one byte at a time, but advance the pointer by the desired size*/
+		/*to ensure proper alignment for the target data type.*/
+		for (j = 0; j < size; j++)
+		{
+			*((char *)(str) + j + (i * size)) = (char)b;
+		}
+	}
 
 	return (str);
 }
