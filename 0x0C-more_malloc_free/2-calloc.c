@@ -34,7 +34,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
  *Return: pointer to the string
  */
 
-void *_memset(void *str, int b, unsigned int n, unsigned int size)
+void *_memset(void *str, int b, size_t n, size_t size)
 {
 	unsigned int i;
 
