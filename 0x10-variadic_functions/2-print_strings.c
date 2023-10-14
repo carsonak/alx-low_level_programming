@@ -9,13 +9,11 @@ void print_strings(const char *separator, const unsigned int n, ...)
 {
 	va_list wrds;
 	unsigned int i;
-	char *str;
 
 	va_start(wrds, n);
 	for (i = 1; i <= n; i++)
 	{
-		str = va_arg(wrds, char *);
-		if (str == NULL)
+		if (wrds == NULL)
 			printf("(nil)");
 		else
 			printf("%s", va_arg(wrds, char *));
