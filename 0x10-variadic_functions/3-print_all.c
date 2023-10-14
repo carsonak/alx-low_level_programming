@@ -24,15 +24,23 @@ void print_all(const char *const format, ...)
 			if (format[a] == ops[b].ch)
 			{
 				ops[b].f(set);
-				if (format[a + 1])
-					printf(", ");
+				/*if (format[a + 1])*/
+				/*printf(", ");*/
+				switch (format[a + 1])
+				{
+				case '\0':
+					break;
 
-				break;
+				default:
+					printf(", ");
+					break;
+				}
 			}
 			b++;
 		}
 		a++;
 	}
+	va_end(set);
 	putchar('\n');
 }
 
