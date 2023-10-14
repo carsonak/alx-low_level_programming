@@ -7,7 +7,7 @@
 void print_all(const char *const format, ...)
 {
 	va_list set;
-	unsigned long int i = 0, j;
+	unsigned long int a = 0, b;
 	op_t ops[] = {
 		{'c', print_c},
 		{'i', print_i},
@@ -16,24 +16,24 @@ void print_all(const char *const format, ...)
 		{'\0', NULL}};
 
 	va_start(set, format);
-	while (format[i])
+	while (format[a])
 	{
-		j = 0;
-		while (ops[j].ch)
+		b = 0;
+		while (ops[b].ch)
 		{
-			if (format[i] == ops[j].ch)
+			if (format[a] == ops[b].ch)
 			{
-				ops[i].f(set);
+				ops[b].f(set);
+				if (format[a + 1])
+					printf(", ");
+
 				break;
 			}
-			j++;
+			b++;
 		}
-		i++;
-		if (i < strlen(format))
-			printf(", ");
+		a++;
 	}
-
-	va_end(set);
+	putchar('\n');
 }
 
 /**
@@ -62,7 +62,12 @@ void print_i(va_list set)
  */
 void print_s(va_list set)
 {
-	printf("%s", va_arg(set, char *));
+	char *str = va_arg(set, char *);
+	if (str == NULL)
+		printf("(nil)");
+	else
+		printf("%s", str);
+
 	va_end(set);
 }
 
