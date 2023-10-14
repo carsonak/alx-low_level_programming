@@ -17,15 +17,15 @@ void print_s(va_list st);
 void print_f(va_list st);
 
 /**
- * struct op - Struct op
+ * struct prt - struct prt for storing a format specifier and it's function
  *
- * @ch: The operator
- * @f: The function associated
+ * @ch: The format identifier
+ * @f: The printing function associated
  */
-typedef struct op
+typedef struct prt
 {
 	char ch;
 	void (*f)(va_list set);
-} op_t;
+} f_prt;
 
 #endif /*VARIADIC_FUNCTIONS_H*/

@@ -8,7 +8,7 @@ void print_all(const char *const format, ...)
 {
 	va_list set;
 	unsigned long int a = 0, b;
-	op_t ops[] = {
+	f_prt ids[] = {
 		{'c', print_c},
 		{'i', print_i},
 		{'s', print_s},
@@ -19,13 +19,11 @@ void print_all(const char *const format, ...)
 	while (format[a])
 	{
 		b = 0;
-		while (ops[b].ch)
+		while (ids[b].ch)
 		{
-			if (format[a] == ops[b].ch)
+			if (format[a] == ids[b].ch)
 			{
-				ops[b].f(set);
-				/*if (format[a + 1])*/
-				/*printf(", ");*/
+				ids[b].f(set);
 				switch (format[a + 1])
 				{
 				case '\0':
@@ -35,6 +33,7 @@ void print_all(const char *const format, ...)
 					printf(", ");
 					break;
 				}
+				break;
 			}
 			b++;
 		}
@@ -51,7 +50,6 @@ void print_all(const char *const format, ...)
 void print_c(va_list set)
 {
 	printf("%c", va_arg(set, int));
-	va_end(set);
 }
 
 /**
@@ -61,7 +59,6 @@ void print_c(va_list set)
 void print_i(va_list set)
 {
 	printf("%i", va_arg(set, int));
-	va_end(set);
 }
 
 /**
@@ -71,12 +68,13 @@ void print_i(va_list set)
 void print_s(va_list set)
 {
 	char *str = va_arg(set, char *);
-	if (str == NULL)
-		printf("(nil)");
-	else
-		printf("%s", str);
 
-	va_end(set);
+	if (!(str))
+	{
+		printf("(nil)");
+		return;
+	}
+	printf("%s", str);
 }
 
 /**
@@ -86,5 +84,29 @@ void print_s(va_list set)
 void print_f(va_list set)
 {
 	printf("%f", va_arg(set, double));
-	va_end(set);
 }
+
+#ifdef SWITCH_
+switch (format[i])
+{
+case 'c':
+	ch = va_arg(args, int);
+	printf("%c", asdf);
+	break;
+case 'i':
+	num = va_arg(args, int);
+	printf("%d", asdf);
+	break;
+case 's':
+	str = va_arg(args, char *);
+	printf("%f", asdf);
+	break;
+case 'f':
+	num2 = va_arg(args, float);
+	printf("%f", asdf);
+	break;
+
+default:
+	break;
+}
+#endif
