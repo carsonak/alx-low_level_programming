@@ -15,31 +15,34 @@ void print_all(const char *const format, ...)
 		{'f', print_f},
 		{'\0', NULL}};
 
-	va_start(set, format);
-	while (format[a])
+	if (format)
 	{
-		b = 0;
-		while (ids[b].ch)
+		va_start(set, format);
+		while (format[a])
 		{
-			if (format[a] == ids[b].ch)
+			b = 0;
+			while (ids[b].ch)
 			{
-				ids[b].f(set);
-				switch (format[a + 1])
+				if (format[a] == ids[b].ch)
 				{
-				case '\0':
-					break;
+					ids[b].f(set);
+					switch (format[a + 1])
+					{
+					case '\0':
+						break;
 
-				default:
-					printf(", ");
+					default:
+						printf(", ");
+						break;
+					}
 					break;
 				}
-				break;
+				b++;
 			}
-			b++;
+			a++;
 		}
-		a++;
+		va_end(set);
 	}
-	va_end(set);
 	putchar('\n');
 }
 
