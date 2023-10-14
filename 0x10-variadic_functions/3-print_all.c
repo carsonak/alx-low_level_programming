@@ -62,18 +62,7 @@ void print_i(va_list set)
  */
 void print_s(va_list set)
 {
-	char *str = va_arg(set, char *);
-	switch (*str)
-	{
-	case str == NULL:
-		printf("(nil)");
-		break;
-
-	default:
-		printf("%s", va_arg(set, char *));
-		break;
-	}
-
+	printf("%s", va_arg(set, char *));
 	va_end(set);
 }
 
