@@ -28,7 +28,6 @@ void print_all(const char *const format, ...)
 				{
 				case '\0':
 					break;
-
 				default:
 					printf(", ");
 					break;
@@ -38,9 +37,8 @@ void print_all(const char *const format, ...)
 			b++;
 		}
 		a++;
-		}
-		va_end(set);
-
+	}
+	va_end(set);
 	putchar('\n');
 }
 
