@@ -16,37 +16,29 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 
 	i = strlen(n1) - 1;
 	j = strlen(n2) - 1;
-	r[size_r] = '\0';
-	k = size_r - 1;
+	r[size_r - 1] = '\0';
+	k = size_r - 2;
 	sumL = 0;
 	while (i >= 0 || j >= 0 || sumL > 0)
 	{
-		if (j < 0)
+		if (i >= 0)
 		{
-			sumL += (*(n1 + i) - '0');
-		}
-		else if (i < 0)
-		{
-			sumL += (*(n2 + j) - '0');
-		}
-		else
-		{
-			sumL += ((*(n1 + i) - '0') + (*(n2 + j) - '0'));
+			sumL += (n1[i] - '0');
+			--i;
 		}
 
-		if (k < 0 && (i >= 0 || j >= 0 || sumL > 0))
+		if (j >= 0)
 		{
+			sumL += (n2[j] - '0');
+			--j;
+		}
+
+		if (k < 0)
 			return (0);
-		}
-		else
-		{
-			r[k] = (sumL % 10) + '0';
-			sumL /= 10;
-		}
 
-		i--;
-		j--;
-		k--;
+		r[k] = (sumL % 10) + '0';
+		sumL /= 10;
+		--k;
 	}
 
 	return (r + k + 1);
