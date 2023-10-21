@@ -13,7 +13,7 @@ list_t *add_node(list_t **head, const char *str)
 	unsigned int i = 1;
 	char *nw_str;
 
-	if (*head == NULL || str == NULL)
+	if (str == NULL)
 		return (0);
 
 	nw_str = strdup(str);
