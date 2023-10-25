@@ -22,7 +22,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 
 	if (n < strlen(s2))
 	{
-		bGstr = malloc(strlen(s1) + n);
+		bGstr = malloc(strlen(s1) + n + 1);
 
 		if (bGstr == NULL)
 			return (NULL);
@@ -32,7 +32,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	}
 	else
 	{
-		bGstr = malloc((strlen(s1) + 1) + (strlen(s2) + 1));
+		bGstr = malloc(strlen(s1) + (strlen(s2) + 1));
 
 		if (bGstr == NULL)
 			return (NULL);
