@@ -9,35 +9,56 @@
 size_t print_listint_safe(const listint_t *head)
 {
 	const listint_t *ptr = head;
-	size_t node = 0;
-	int diff = 0;
+	size_t node = 0, i;
+	int *adres, n = 0;
 
-	diff = head - head->next;
+	while (ptr)
+	{
+		n++;
+		adres = malloc(sizeof(*adres) * n);
+		adres[n] = ptr;
+		ptr = ptr->next;
 
-	if (diff < 0)
-	{
-		while ((diff < 0) && ptr)
-		{
-			printf("[%p] %d\n", (void *)ptr, ptr->n);
-			node++;
-			diff = ptr - ptr->next;
-			ptr = ptr->next;
-		}
+		for (i = 0; i < n; i++)
+			if (ptr == adres[i])
+				return (adres[i]);
 	}
-	else if (diff > 0)
-	{
-		while ((diff > 0) && ptr)
-		{
-			printf("[%p] %d\n", (void *)ptr, ptr->n);
-			node++;
-			diff = ptr - ptr->next;
-			ptr = ptr->next;
-		}
-	}
-	else
-		printf("[%p] %d\n", (void *)ptr, ptr->n);
 
 	printf("-> [%p] %d\n", (void *)ptr, ptr->n);
 
 	return (node);
+}
+
+/**
+ * check_loop - checks for a loop in a linked list
+ * @head: pointer to the head of the list
+ *
+ * Return: Address of the start of the loop, 0 if none
+ */
+int check_loop(const listint_t *head)
+{
+	const listint_t *ptr = head;
+	int i, *adres, *ad_cpy, loop_at = 0, n = 0;
+
+	while (ptr)
+	{
+		n++;
+		adres = malloc(sizeof(*adres) * n);
+		adres[n] = ptr;
+		ad_cpy = adres;
+		ptr = ptr->next;
+
+		for (i = 0; i < n; i++)
+		{
+			if (ptr == adres)
+			{
+				loop_at = adres;
+				break;
+			}
+		}
+		if (loop_at > 0)
+			break;
+	}
+
+	return (loop_at);
 }
