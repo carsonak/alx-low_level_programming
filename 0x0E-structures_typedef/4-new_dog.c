@@ -16,7 +16,19 @@ dog_t *new_dog(char *name, float age, char *owner)
 	int i;
 
 	if (!another_dog || !name_cpy || !owner_cpy)
+	{
+		if (!name_cpy)
+		{
+			free(owner_cpy);
+			free(another_dog);
+		}
+		else if (!owner_cpy)
+		{
+			free(name_cpy);
+			free(another_dog);
+		}
 		return (NULL);
+	}
 
 	for (i = 0; name[i]; i++)
 		name_cpy[i] = name[i];
