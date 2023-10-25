@@ -20,25 +20,25 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	if (s2 == NULL)
 		s2 = "";
 
-	if (n <= sizeof(s2))
+	if (n <= (strlen(s2) + 1))
 	{
-		bGstr = malloc(sizeof(s1) + n);
+		bGstr = malloc((strlen(s1) + 1) + n);
 
 		if (bGstr == NULL)
 			return (NULL);
 
-		bGstr = _strncat(bGstr, s1, sizeof(s1));
+		bGstr = _strncat(bGstr, s1, (strlen(s1) + 1));
 		bGstr = _strncat(bGstr, s2, n);
 	}
 	else
 	{
-		bGstr = malloc(sizeof(s1) + sizeof(s2));
+		bGstr = malloc((strlen(s1) + 1) + (strlen(s2) + 1));
 
 		if (bGstr == NULL)
 			return (NULL);
 
-		bGstr = _strncat(bGstr, s1, sizeof(s1));
-		bGstr = _strncat(bGstr, s2, sizeof(s2));
+		bGstr = _strncat(bGstr, s1, (strlen(s1) + 1));
+		bGstr = _strncat(bGstr, s2, (strlen(s2) + 1));
 	}
 
 	return (bGstr);
