@@ -11,7 +11,7 @@ unsigned int binary_to_uint(const char *b)
 	unsigned long int len, ttl = 0;
 	long int i;
 
-	if (b == NULL || b == "")
+	if (b == NULL)
 		return (0);
 
 	len = strlen(b);
