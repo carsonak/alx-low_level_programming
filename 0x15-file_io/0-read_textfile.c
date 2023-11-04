@@ -12,7 +12,6 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	int fd;
 	ssize_t rdSz, wrSz;
 	char *buffer;
-	FILE book = {};
 
 	if (filename == NULL)
 		return (0);
@@ -33,7 +32,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 	}
 
-	wrSz = write(STDOUT_FILENO, buffer, rdSz);
+	wrSz = write(fd, buffer, rdSz);
 	free(buffer);
 	if (rdSz != wrSz)
 		return (0);
