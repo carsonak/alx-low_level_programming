@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- *_memset - fills a memory with a constant bite.
+ *_memset - fills a memory with a constant byte.
  *@s: pointer to the string
  *@b: the character to be used
  *@n: number of times the character will be added

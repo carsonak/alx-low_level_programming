@@ -3,23 +3,18 @@
 /**
  *_strcpy - copies a string to a buffer
  *@src: the string to be copied
- *@dest: pointer to buffer
+ *@dest: pointer to the buffer
  *
- *Return: *dest
+ *Return: pointer to the buffer
  */
 
 char *_strcpy(char *dest, char *src)
 {
-	int a, i;
+	unsigned long int a, i;
 
 	a = strlen(src);
-
-	i = 0;
-	while  (i <= a)
-	{
+	for (i = 0; i <= a; i++)
 		*(dest + i) = *(src + i);
-		i++;
-	}
 
 	return (dest);
 }
