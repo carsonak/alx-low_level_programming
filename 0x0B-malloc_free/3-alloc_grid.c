@@ -20,10 +20,8 @@ int **alloc_grid(int width, int height)
 	 */
 	grd = malloc(sizeof(*grd) * height);
 	if (grd == NULL)
-	{
-		free(grd);
 		return (NULL);
-	}
+
 	/*Adds slots of int size to the previously created pointers*/
 	for (h = 0; h < height; h++)
 	{
