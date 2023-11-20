@@ -13,7 +13,7 @@ char *str_concat(char *s1, char *s2)
 	unsigned long int i = 0;
 
 	if (!s1 && !s2)
-		return (bGstr);
+		return (malloc(sizeof(*bGstr)));
 	else if (!s1 && s2)
 		bGstr = malloc((sizeof(*s2) * strlen(s2)) + 1);
 	else if (s1 && !s2)
