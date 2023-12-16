@@ -26,5 +26,6 @@ char *infiX_mul(char *n1, char *n2);
 char *infiX_add(char *n1, char *n2);
 ssize_t _strlen(char *s);
 size_t _strspn(char *s, char *accept);
+size_t pad_char(char *str, char *ch);
 
 #endif /*ENDIF*/

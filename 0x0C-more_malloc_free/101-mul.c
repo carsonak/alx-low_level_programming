@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 	if (!results)
 		exit(EXIT_FAILURE);
 
-	for (i = _strspn(results, "0"); results[i]; i++)
+	for (i = pad_char(results, "0"); results[i]; i++)
 		_putchar(results[i]);
 
 	_putchar('\n');
@@ -102,23 +102,13 @@ char *infiX_mul(char *n1, char *n2)
  */
 char *infiX_add(char *n1, char *n2)
 {
-	ssize_t a = -1, b = -1, byt_sum = 0, sum_i = 0, zeros = 0;
+	ssize_t a = 0, b = 0, byt_sum = 0, sum_i = 0;
 	char *sum = NULL;
 
-	if (n1)
-	{
-		zeros = (ssize_t)_strspn(n1, "0");
-		n1 += (zeros == _strlen(n1)) ? zeros - 1 : zeros;
-		a = (ssize_t)(_strlen(n1) - 1);
-	}
-
-	if (n2)
-	{
-		zeros = (ssize_t)_strspn(n2, "0");
-		n2 += (zeros == _strlen(n2)) ? zeros - 1 : zeros;
-		b = (ssize_t)(_strlen(n2) - 1);
-	}
-
+	n1 += n1 ? pad_char(n1, "0") : 0;
+	n2 += n2 ? pad_char(n2, "0") : 0;
+	a = n1 ? (ssize_t)(_strlen(n1) - 1) : -1;
+	b = n2 ? (ssize_t)(_strlen(n2) - 1) : -1;
 	sum_i = (a > b) ? a : b;
 	if (sum_i < 0)
 		return (NULL);
@@ -194,14 +184,13 @@ size_t _strspn(char *s, char *accept)
 }
 
 /**
- *_memset - fills a memory with a constant byte.
- *@buffer: pointer to the buffer
- *@ch: ASCII of the character to be used
- *@n: number of times the character will be repeated
+ * _memset - fills a memory with a constant byte.
+ * @buffer: pointer to the buffer
+ * @ch: ASCII of the character to be used
+ * @n: number of times the character will be repeated
  *
- *Return: pointer to the string
+ * Return: pointer to the string
  */
-
 void *_memset(void *buffer, int ch, size_t n)
 {
 	size_t i = 0;
@@ -210,4 +199,26 @@ void *_memset(void *buffer, int ch, size_t n)
 		*((char *)buffer + i) = (char)ch;
 
 	return (buffer);
+}
+
+/**
+ * pad_char - calculates length of initial padding characters in a string
+ * @str: the string to check
+ * @ch: the character
+ *
+ * Return: number of padding characters
+ */
+size_t pad_char(char *str, char *ch)
+{
+	size_t zeros = 0, len = 0;
+
+	if (str)
+	{
+		len = _strlen(str);
+		zeros = _strspn(str, ch);
+		if (len && (zeros == len))
+			zeros--;
+	}
+
+	return (zeros);
 }
