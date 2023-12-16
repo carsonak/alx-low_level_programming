@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 
 	if ((argc != 3) || (!_strlen(argv[1]) || !_strlen(argv[2])))
 	{
-		write(STDOUT_FILENO, "Error", 5);
+		write(STDOUT_FILENO, "Error\n", 6);
 		exit(98);
 	}
 
@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 
 		if (!isdigit(argv[1][i]) || !isdigit(argv[2][j]))
 		{
-			write(STDOUT_FILENO, "Error", 5);
+			write(STDOUT_FILENO, "Error\n", 6);
 			exit(98);
 		}
 
