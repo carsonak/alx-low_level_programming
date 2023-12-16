@@ -34,7 +34,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		}
 
 		if (k < 0)
-			return (0);
+			return (NULL);
 
 		r[k] = (sumL % 10) + '0';
 		sumL /= 10;
