@@ -5,7 +5,7 @@
  *@s1: first string.
  *@s2: second string.
  *
- *Return: 0 if both equal, -15 if s1 shorter, 15 if s1 longer.
+ *Return: 0 if both equal, -ve if s1 shorter, +ve if s1 longer.
  */
 int _strcmp(char *s1, char *s2)
 {
