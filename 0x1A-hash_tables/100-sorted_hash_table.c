@@ -8,21 +8,21 @@
  */
 shash_table_t *shash_table_create(unsigned long int size)
 {
-	shash_table_t *table = calloc(1, sizeof(*table));
+	shash_table_t *shsh_table = calloc(1, sizeof(*shsh_table));
 
-	if (table && size)
+	if (shsh_table && size)
 	{
-		table->array = calloc(size, sizeof(*(table->array)));
-		if (!table->array)
+		shsh_table->array = calloc(size, sizeof(*(shsh_table->array)));
+		if (!shsh_table->array)
 		{
-			free(table);
+			free(shsh_table);
 			return (NULL);
 		}
 		else
-			table->size = size;
+			shsh_table->size = size;
 	}
 
-	return (table);
+	return (shsh_table);
 }
 
 /**
@@ -36,7 +36,7 @@ shash_table_t *shash_table_create(unsigned long int size)
 int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
 	size_t id = 0;
-	shash_node_t *walk = NULL, *nw_temp = NULL;
+	shash_node_t *walk = NULL;
 
 	if (!ht || !ht->array || !key)
 		return (0);
@@ -58,17 +58,12 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	}
 	else
 	{
-		walk = add_node_head(&(ht->array[id]), key, value);
+		walk = add_node_head((void *)&(ht->array[id]), key, value);
 		if (!walk)
 			return (0);
 	}
 
-	nw_temp = walk;
-	for (walk = ht->shead; walk && walk->snext; walk = walk->snext)
-		if (strcmp(walk->key, key) < 0)
-			break;
-
-	if (!add_snode_afthere((void *)&walk, (void *)&nw_temp))
+	if (!sort_add_node(ht, walk))
 		return (0);
 
 	return (1);
@@ -169,7 +164,6 @@ void shash_table_print_rev(const shash_table_t *ht)
 void shash_table_delete(shash_table_t *ht)
 {
 	shash_node_t *f_foot = NULL, *b_foot = NULL;
-	size_t i = 0;
 
 	if (ht)
 	{
@@ -223,34 +217,60 @@ void *add_node_head(void **h, const char *key, const char *val)
 }
 
 /**
- * add_snode_afthere - insert a node after the given node
- * @at_node: address of the pointer to the node to add after
- * @nw_node: address of the node to be added
+ * sort_add_node - insert a node in a sorted linked list
+ * @shead: pointer to the head of the linked list
+ * @node: node to be inserted
  *
- * Return: pointer to the just created node
+ * Return: pointer to the added node
  */
-void *add_snode_afthere(void **at_node, void **nw_node)
+shash_node_t *sort_add_node(shash_table_t *ht, shash_node_t *node)
 {
-	shash_node_t *at_cpy = NULL, *nw_cpy = NULL;
+	shash_node_t *swalk = NULL;
 
-	if (!at_node || !nw_node)
+	if (!ht || !node)
 		return (NULL);
 
-	at_cpy = (shash_node_t *)(*at_node);
-	nw_cpy = (shash_node_t *)(*nw_node);
-	if (at_cpy)
+	for (swalk = ht->shead; swalk && swalk->snext; swalk = swalk->snext)
+		if (strcmp(swalk->key, node->key) >= 0)
+			break;
+
+	if (!swalk || !swalk->sprev)
 	{
-		nw_cpy->snext = at_cpy->snext;
-		at_cpy->snext = nw_cpy;
+		node->snext = ht->shead;
+		node->sprev = NULL;
+		if (!swalk || strcmp(swalk->key, node->key) >= 0)
+		{ /* Inserting bfr the head */
+			ht->shead = node;
+			if (swalk)
+				node->snext->sprev = node;
+		}
+		else
+		{ /* Inserting after the head */
+			node->snext = ht->shead->snext;
+			node->sprev = ht->shead;
+			ht->shead->snext = node;
+		}
 	}
-	else
+	else if (swalk || !swalk->snext)
 	{
-		nw_cpy->snext = NULL;
-		at_cpy = nw_cpy;
+		node->snext = swalk;
+		node->sprev = swalk->sprev;
+		/*Inserting somewhere in middle*/
+		if (swalk->snext || strcmp(swalk->key, node->key) >= 0)
+		{
+			swalk->sprev->snext = node;
+			swalk->sprev = node;
+		}
+		else
+		{ /* Inserting at the tail */
+			node->snext = NULL;
+			node->sprev = swalk;
+			swalk->snext = node;
+			ht->stail = node;
+		}
 	}
 
-	nw_cpy->sprev = at_cpy;
-	return (nw_cpy);
+	return (node);
 }
 
 /**
