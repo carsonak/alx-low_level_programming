@@ -1,8 +1,8 @@
 #include "hash_tables.h"
 
 /**
- * hash_table_create - malloc space for an array of pointers
- * @size: size of the array
+ * hash_table_create - alloc space for a hash table
+ * @size: size of the hash table
  *
  * Return: pointer on success, NULL on failure
  */

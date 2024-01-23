@@ -1,16 +1,16 @@
 #include "hash_tables.h"
 
 /**
- * shash_table_create - malloc space for an array of pointers
- * @size: size of the array
+ * shash_table_create - alloc space for a sorted hash table
+ * @size: size of the hash table
  *
- * Return: pointer on success, NULL on failure
+ * Return: a struct pointer on success, NULL on failure
  */
 shash_table_t *shash_table_create(unsigned long int size)
 {
 	shash_table_t *table = calloc(1, sizeof(*table));
 
-	if (table)
+	if (table && size)
 	{
 		table->array = calloc(size, sizeof(*(table->array)));
 		if (!table->array)
@@ -26,8 +26,8 @@ shash_table_t *shash_table_create(unsigned long int size)
 }
 
 /**
- * shash_table_set - updates a hash table with an element
- * @ht: pointer to valuct with hash table information
+ * shash_table_set - updates a sorted hash table with an element
+ * @ht: pointer to struct with sorted hash table information
  * @key: key of the value
  * @value: data to be added
  *
@@ -36,7 +36,7 @@ shash_table_t *shash_table_create(unsigned long int size)
 int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
 	size_t id = 0;
-	shash_node_t *walk = NULL;
+	shash_node_t *walk = NULL, *nw_temp = NULL;
 
 	if (!ht || !ht->array || !key)
 		return (0);
@@ -44,14 +44,9 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	id = key_index((const unsigned char *)key, ht->size);
 	if (ht->array[id])
 	{
-		walk = ht->array[id];
-		while (walk)
-		{
-			if (!strcmp(key, walk->key))
+		for (walk = ht->array[id]; walk; walk = walk->next)
+			if (!strcmp(walk->key, key))
 				break;
-
-			walk = walk->next;
-		}
 	}
 
 	if (walk)
@@ -60,11 +55,20 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 		walk->value = _strdup(value);
 		if (value && !walk->value)
 			return (0);
-
-		return (1);
+	}
+	else
+	{
+		walk = add_node_head(&(ht->array[id]), key, value);
+		if (!walk)
+			return (0);
 	}
 
-	if (!add_node_head(&(ht->array[id]), key, value))
+	nw_temp = walk;
+	for (walk = ht->shead; walk && walk->snext; walk = walk->snext)
+		if (strcmp(walk->key, key) < 0)
+			break;
+
+	if (!add_snode_afthere((void *)&walk, (void *)&nw_temp))
 		return (0);
 
 	return (1);
@@ -103,40 +107,60 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
 void shash_table_print(const shash_table_t *ht)
 {
 	shash_node_t *walk = NULL;
-	size_t i = 0;
 	char comma = '\0', space = '\0';
 
 	if (ht)
 	{
 		printf("{");
-		for (i = 0; i < ht->size; i++)
+		walk = ht->shead;
+		while (walk)
 		{
-			if (ht->array[i])
+			if (comma && space)
 			{
-				walk = ht->array[i];
-				while (walk)
-				{
-					if (comma && space)
-					{
-						putchar(comma);
-						putchar(space);
-					}
-
-					printf("'%s': '%s'", walk->key, walk->value);
-					comma = ',';
-					space = ' ';
-					walk = walk->next;
-				}
+				putchar(comma);
+				putchar(space);
 			}
+
+			printf("'%s': '%s'", walk->key, walk->value);
+			comma = ',';
+			space = ' ';
+			walk = walk->snext;
 		}
+
 		printf("}\n");
 	}
 }
 
 /**
- *
+ * shash_table_print_rev - prints a sorted hash table in reverse
+ * @ht: pointer to a struct with information on the hash table
  */
-void shash_table_print_rev(const shash_table_t *ht) {}
+void shash_table_print_rev(const shash_table_t *ht)
+{
+	shash_node_t *bwalk = NULL;
+	char comma = '\0', space = '\0';
+
+	if (ht)
+	{
+		printf("{");
+		bwalk = ht->stail;
+		while (bwalk)
+		{
+			if (comma && space)
+			{
+				putchar(comma);
+				putchar(space);
+			}
+
+			printf("'%s': '%s'", bwalk->key, bwalk->value);
+			comma = ',';
+			space = ' ';
+			bwalk = bwalk->sprev;
+		}
+
+		printf("}\n");
+	}
+}
 
 /**
  * shash_table_delete - frees memory allocated to a hash table
@@ -149,22 +173,15 @@ void shash_table_delete(shash_table_t *ht)
 
 	if (ht)
 	{
-		for (i = 0; ht->array && i < ht->size; i++)
+		f_foot = ht->shead;
+		while (f_foot)
 		{
-			if (ht->array[i])
-			{
-				f_foot = ht->array[i];
-				while (f_foot)
-				{
-					b_foot = f_foot;
-					f_foot = f_foot->next;
-					free(b_foot->key);
-					free(b_foot->value);
-					free(b_foot);
-				}
-			}
+			b_foot = f_foot;
+			f_foot = f_foot->snext;
+			free(b_foot->key);
+			free(b_foot->value);
+			free(b_foot);
 		}
-
 		free(ht->array);
 		free(ht);
 		ht = NULL;
@@ -186,7 +203,7 @@ void *add_node_head(void **h, const char *key, const char *val)
 	if (!h)
 		return (NULL);
 
-	nw_node = malloc(sizeof(*nw_node));
+	nw_node = calloc(1, sizeof(*nw_node));
 	if (!nw_node)
 		return (NULL);
 
@@ -206,6 +223,37 @@ void *add_node_head(void **h, const char *key, const char *val)
 }
 
 /**
+ * add_snode_afthere - insert a node after the given node
+ * @at_node: address of the pointer to the node to add after
+ * @nw_node: address of the node to be added
+ *
+ * Return: pointer to the just created node
+ */
+void *add_snode_afthere(void **at_node, void **nw_node)
+{
+	shash_node_t *at_cpy = NULL, *nw_cpy = NULL;
+
+	if (!at_node || !nw_node)
+		return (NULL);
+
+	at_cpy = (shash_node_t *)(*at_node);
+	nw_cpy = (shash_node_t *)(*nw_node);
+	if (at_cpy)
+	{
+		nw_cpy->snext = at_cpy->snext;
+		at_cpy->snext = nw_cpy;
+	}
+	else
+	{
+		nw_cpy->snext = NULL;
+		at_cpy = nw_cpy;
+	}
+
+	nw_cpy->sprev = at_cpy;
+	return (nw_cpy);
+}
+
+/**
  * _strdup - copies a string into a new memory area.
  * @str: the string
  *
@@ -213,7 +261,7 @@ void *add_node_head(void **h, const char *key, const char *val)
  */
 char *_strdup(const char *str)
 {
-	char *cpy;
+	char *cpy = NULL;
 	size_t i = 0, len = 0;
 
 	if (!str)
@@ -222,7 +270,7 @@ char *_strdup(const char *str)
 	len = strlen(str);
 	cpy = calloc(sizeof(*str), (len + 1));
 	if (cpy)
-		for (i = 0; i <= len; i++)
+		for (i = 0; i < len; i++)
 			cpy[i] = str[i];
 
 	return (cpy);

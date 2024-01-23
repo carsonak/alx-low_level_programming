@@ -60,7 +60,7 @@ void *add_node_head(void **h, const char *key, const char *val)
 	if (!h)
 		return (NULL);
 
-	nw_node = malloc(sizeof(*nw_node));
+	nw_node = calloc(1, sizeof(*nw_node));
 	if (!nw_node)
 		return (NULL);
 
@@ -87,7 +87,7 @@ void *add_node_head(void **h, const char *key, const char *val)
  */
 char *_strdup(const char *str)
 {
-	char *cpy;
+	char *cpy = NULL;
 	size_t i = 0, len = 0;
 
 	if (!str)
@@ -96,7 +96,7 @@ char *_strdup(const char *str)
 	len = strlen(str);
 	cpy = calloc(sizeof(*str), (len + 1));
 	if (cpy)
-		for (i = 0; i <= len; i++)
+		for (i = 0; i < len; i++)
 			cpy[i] = str[i];
 
 	return (cpy);
