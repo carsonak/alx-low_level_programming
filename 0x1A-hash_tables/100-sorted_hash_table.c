@@ -217,59 +217,53 @@ void *add_node_head(void **h, const char *key, const char *val)
 }
 
 /**
- * sort_add_node - insert a node in a sorted linked list
- * @shead: pointer to the head of the linked list
+ * sort_add_node - insert a node in a sorted hash table linked list
+ * @ht: pointer to a struct with information about a hash table
  * @node: node to be inserted
  *
- * Return: pointer to the added node
+ * Return: pointer to the added node, NULL if invalid arguments
  */
 shash_node_t *sort_add_node(shash_table_t *ht, shash_node_t *node)
 {
 	shash_node_t *swalk = NULL;
-
-	if (!ht || !node)
-		return (NULL);
-
+	/*if (!ht || !node)*/ /*return (NULL);*/
 	for (swalk = ht->shead; swalk && swalk->snext; swalk = swalk->snext)
 		if (strcmp(swalk->key, node->key) >= 0)
 			break;
 
-	if (!swalk || !swalk->sprev)
+	if (!swalk || !swalk->sprev) /*If at the head of the list*/
 	{
-		node->snext = ht->shead;
-		node->sprev = NULL;
+		node->snext = swalk; /*node->sprev = NULL;*/
 		if (!swalk || strcmp(swalk->key, node->key) >= 0)
-		{ /* Inserting bfr the head */
+		{ /*Inserting bfr the head*/
 			ht->shead = node;
-			if (swalk)
-				node->snext->sprev = node;
+			if (swalk) /*If not the only item in the list*/
+				swalk->sprev = node;
 		}
 		else
 		{ /* Inserting after the head */
-			node->snext = ht->shead->snext;
-			node->sprev = ht->shead;
-			ht->shead->snext = node;
+			node->snext = swalk->snext;
+			node->sprev = swalk;
+			swalk->snext = node;
 		}
 	}
-	else if (swalk || !swalk->snext)
+	else
 	{
 		node->snext = swalk;
 		node->sprev = swalk->sprev;
-		/*Inserting somewhere in middle*/
 		if (swalk->snext || strcmp(swalk->key, node->key) >= 0)
-		{
+		{ /*Inserting somewhere in middle*/
 			swalk->sprev->snext = node;
 			swalk->sprev = node;
 		}
 		else
-		{ /* Inserting at the tail */
+		{ /*Inserting at the tail*/
 			node->snext = NULL;
 			node->sprev = swalk;
 			swalk->snext = node;
 			ht->stail = node;
 		}
 	}
-
 	return (node);
 }
 
