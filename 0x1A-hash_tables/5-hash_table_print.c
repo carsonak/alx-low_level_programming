@@ -8,7 +8,7 @@ void hash_table_print(const hash_table_t *ht)
 {
 	hash_node_t *walk = NULL;
 	size_t i = 0;
-	char comma = '\0';
+	char comma = '\0', space = '\0';
 
 	if (ht)
 	{
@@ -21,8 +21,10 @@ void hash_table_print(const hash_table_t *ht)
 				while (walk)
 				{
 					putchar(comma);
+					putchar(space);
 					printf("'%s':'%s'", walk->key, walk->value);
 					comma = ',';
+					space = ' ';
 					walk = walk->next;
 				}
 			}
