@@ -49,22 +49,30 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 				break;
 	}
 
-	if (walk)
+	if (!walk)
+	{
+		walk = add_node_head((void *)&(ht->array[id]), key, value);
+		if (!walk)
+			return (0);
+
+		if (!sort_add_node(ht, walk))
+			return (0);
+	}
+	else
 	{
 		free(walk->value);
 		walk->value = _strdup(value);
 		if (value && !walk->value)
 			return (0);
 	}
-	else
-	{
-		walk = add_node_head((void *)&(ht->array[id]), key, value);
-		if (!walk)
-			return (0);
-	}
 
-	if (!sort_add_node(ht, walk))
-		return (0);
+	if (!ht->stail)
+	{
+		for (walk = ht->shead; walk->snext; walk = walk->snext)
+			;
+
+		ht->stail = walk;
+	}
 
 	return (1);
 }
@@ -102,7 +110,7 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
 void shash_table_print(const shash_table_t *ht)
 {
 	shash_node_t *walk = NULL;
-	char comma = '\0', space = '\0';
+	unsigned char comma_n_spc = 0;
 
 	if (ht)
 	{
@@ -110,15 +118,11 @@ void shash_table_print(const shash_table_t *ht)
 		walk = ht->shead;
 		while (walk)
 		{
-			if (comma && space)
-			{
-				putchar(comma);
-				putchar(space);
-			}
+			if (comma_n_spc)
+				printf(", ");
 
 			printf("'%s': '%s'", walk->key, walk->value);
-			comma = ',';
-			space = ' ';
+			comma_n_spc = 1;
 			walk = walk->snext;
 		}
 
@@ -133,7 +137,7 @@ void shash_table_print(const shash_table_t *ht)
 void shash_table_print_rev(const shash_table_t *ht)
 {
 	shash_node_t *bwalk = NULL;
-	char comma = '\0', space = '\0';
+	unsigned char comma_n_spc = 0;
 
 	if (ht)
 	{
@@ -141,15 +145,11 @@ void shash_table_print_rev(const shash_table_t *ht)
 		bwalk = ht->stail;
 		while (bwalk)
 		{
-			if (comma && space)
-			{
-				putchar(comma);
-				putchar(space);
-			}
+			if (comma_n_spc)
+				printf(", ");
 
 			printf("'%s': '%s'", bwalk->key, bwalk->value);
-			comma = ',';
-			space = ' ';
+			comma_n_spc = 1;
 			bwalk = bwalk->sprev;
 		}
 
@@ -287,5 +287,6 @@ char *_strdup(const char *str)
 		for (i = 0; i < len; i++)
 			cpy[i] = str[i];
 
+	cpy[i] = '\0';
 	return (cpy);
 }

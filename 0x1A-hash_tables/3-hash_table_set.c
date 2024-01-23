@@ -99,5 +99,6 @@ char *_strdup(const char *str)
 		for (i = 0; i < len; i++)
 			cpy[i] = str[i];
 
+	cpy[i] = '\0';
 	return (cpy);
 }
