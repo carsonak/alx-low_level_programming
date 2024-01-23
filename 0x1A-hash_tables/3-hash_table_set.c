@@ -39,7 +39,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (1);
 	}
 
-	if (!add_node_head(&(ht->array[id]), key, value))
+	if (!add_node_head((void *)&(ht->array[id]), key, value))
 		return (0);
 
 	return (1);
@@ -53,7 +53,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
  *
  * Return: pointer to the just created node
  */
-hash_node_t *add_node_head(hash_node_t **h, const char *key, const char *val)
+void *add_node_head(void **h, const char *key, const char *val)
 {
 	hash_node_t *nw_node = NULL;
 
@@ -74,7 +74,7 @@ hash_node_t *add_node_head(hash_node_t **h, const char *key, const char *val)
 		return (NULL);
 	}
 
-	nw_node->next = *h;
+	nw_node->next = (hash_node_t *)(*h);
 	*h = nw_node;
 	return (nw_node);
 }
