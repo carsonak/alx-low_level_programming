@@ -22,7 +22,7 @@ void hash_table_print(const hash_table_t *ht)
 				{
 					putchar(comma);
 					putchar(space);
-					printf("'%s':'%s'", walk->key, walk->value);
+					printf("'%s': '%s'", walk->key, walk->value);
 					comma = ',';
 					space = ' ';
 					walk = walk->next;
