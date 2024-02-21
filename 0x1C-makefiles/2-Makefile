@@ -1,8 +1,9 @@
+# $^ - uses all the prequisites in one go
+all: $(OBJ)
+	$(CC) $^ -o $(NAME)
+
+
 CC := gcc
 SRC := $(wildcard *.c)
 OBJ := $(SRC:%.c=%.o)
 NAME := school
-
-# $^ - uses the prequisites in one go
-all: $(OBJ)
-	$(CC) $^ -o $(NAME)

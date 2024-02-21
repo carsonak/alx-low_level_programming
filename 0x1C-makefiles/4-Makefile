@@ -1,10 +1,3 @@
-CC := gcc
-SRC := $(wildcard *.c)
-OBJ := $(SRC:%.c=%.o)
-NAME := school
-RM := /usr/bin/env rm
-CFLAGS := -Wall -Werror -Wextra -pedantic
-
 all: $(OBJ)
 	$(CC) $^ -o '$(NAME)'
 
@@ -17,3 +10,10 @@ oclean:
 fclean: clean oclean
 
 re: oclean $(OBJ)
+
+CC := gcc
+SRC := $(wildcard *.c)
+OBJ := $(SRC:%.c=%.o)
+NAME := school
+RM := /usr/bin/env rm
+CFLAGS := -Wall -Werror -Wextra -pedantic
