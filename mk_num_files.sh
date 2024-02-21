@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 common_name="-main.c"  # Replace the string in qoutes with your desired common name
 is_suffix=0  # 0 for prefix, 1 for suffix
