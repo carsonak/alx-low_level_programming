@@ -1,0 +1,8 @@
+CC := gcc
+SRC := $(wildcard *.c)
+OBJ := $(SRC:%.c=%.o)
+NAME := school
+
+# $^ - all the listed prerequisites
+all: $(OBJ)
+	$(CC) $^ -o $(NAME)
