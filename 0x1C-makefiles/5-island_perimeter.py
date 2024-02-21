@@ -67,12 +67,6 @@ def find_next(grid: list[list[int]], x: int, y: int) -> dict[str, int]:
 def draw_perimeter(grid: list[list[int]], perimeter: list[list[int]]):
     """"""
 
-    # Skip checking first row
-    # Look for the first cell
-    # Follow adjacent cells till end or a fork
-    # Do recursive call to explore left and right
-    # Proceed till end of joined cells
-
     for x, row in enumerate(grid):
         for y, col in enumerate(row):
             if col:
@@ -90,33 +84,33 @@ def draw_perimeter(grid: list[list[int]], perimeter: list[list[int]]):
     except NameError:
         return
 
+    for key, val in compass.items():
+        if len(key) == 1 and val:
+            break
+    else:
+        key = "N"
 
-def explorer(grid: list[list[int]],
-             x: int, y: int,
-             perimeter: list[list[int]],
-             dir: str):
+    explorer(grid, x, y, perimeter, key)
+
+
+def explorer(grid: list[list[int]], x: int, y: int,
+             perimeter: list[list[int]], dir: str):
     """Moves in only one direction, will call itself recursively to explore other directions"""
 
-    # Update compass
-    # Update perimeter
-    # Check if path splits
-    #   Recurse if necessary
-    # Continue till end of current path
-
-    def path_split(ch, up, down):
-        """"""
+    def path_split(path, up, down):
+        """Checks if path is a path"""
 
         way = None
-        if comp[ch]:
-            if not comp[ch + "E" if ch == "N" or ch == "S" else "N" + ch]\
-                    and not comp[ch + "W" if ch == "N" or ch == "S" else "S" + ch]:
-                if ch == "N":
+        if comp[path]:
+            if not comp[path + "E" if path == "N" or path == "S" else "N" + path]\
+                    and not comp[path + "W" if path == "N" or path == "S" else "S" + path]:
+                if path == "N":
                     up -= 1
-                elif ch == "E":
+                elif path == "E":
                     down += 1
-                elif ch == "S":
+                elif path == "S":
                     up += 1
-                elif ch == "W":
+                elif path == "W":
                     down -= 1
 
                 way = (up, down)
@@ -127,7 +121,7 @@ def explorer(grid: list[list[int]],
     # cad_8 = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"]
     pop = cardinal.index(dir)
     comp = {dir: 1}
-    while comp[dir] and 0 >= x < len(grid) and 0 >= y < len(grid[x]):
+    while comp[dir] and 0 <= x < len(grid) and 0 <= y < len(grid[x]):
         comp = find_next(grid, x, y)
         for point in cardinal:
             if not comp[point]:
