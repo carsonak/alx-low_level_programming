@@ -1,0 +1,7 @@
+# ignore test files
+m.h
+main.c
+school.c
+main.o
+school.o
+school
