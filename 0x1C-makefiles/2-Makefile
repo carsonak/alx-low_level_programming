@@ -3,6 +3,6 @@ SRC := $(wildcard *.c)
 OBJ := $(SRC:%.c=%.o)
 NAME := school
 
-# $^ - all the listed prerequisites
+# $^ - uses the prequisites in one go
 all: $(OBJ)
 	$(CC) $^ -o $(NAME)
