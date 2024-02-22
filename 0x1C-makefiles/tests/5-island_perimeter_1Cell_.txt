@@ -44,7 +44,7 @@ Corners
 ...     [0, 0, 0, 0, 0, 0, 0]
 ... ]
 >>> print(island_perimeter(island))
-4
+0
 
 >>> island = [
 ...     [0, 0, 0, 0, 0, 0, 1],
@@ -56,7 +56,7 @@ Corners
 ...     [0, 0, 0, 0, 0, 0, 0]
 ... ]
 >>> print(island_perimeter(island))
-4
+0
 
 >>> island = [
 ...     [0, 0, 0, 0, 0, 0, 0],
@@ -68,7 +68,7 @@ Corners
 ...     [1, 0, 0, 0, 0, 0, 0]
 ... ]
 >>> print(island_perimeter(island))
-4
+0
 
 >>> island = [
 ...     [0, 0, 0, 0, 0, 0, 0],
@@ -81,7 +81,7 @@ Corners
 ...     [0, 0, 0, 0, 0, 0, 1]
 ... ]
 >>> print(island_perimeter(island))
-4
+0
 
 Edges
 -----
@@ -98,7 +98,7 @@ Edges
 ...     [0, 0, 0, 0, 0, 0, 0]
 ... ]
 >>> print(island_perimeter(island))
-4
+0
 
 ###2nd row left###
 >>> island = [
@@ -112,7 +112,7 @@ Edges
 ...     [0, 0, 0, 0, 0, 0, 0]
 ... ]
 >>> print(island_perimeter(island))
-4
+0
 
 ###2nd last row left###
 >>> island = [
@@ -125,7 +125,7 @@ Edges
 ...     [0, 0, 0, 0, 0, 0, 0]
 ... ]
 >>> print(island_perimeter(island))
-4
+0
 
 ###2nd last row right###
 >>> island = [
@@ -138,7 +138,7 @@ Edges
 ...     [0, 0, 0, 0, 0, 0, 0]
 ... ]
 >>> print(island_perimeter(island))
-4
+0
 
 ###Top left###
 >>> island = [
@@ -151,7 +151,7 @@ Edges
 ...     [0, 0, 0, 0, 0, 0, 0]
 ... ]
 >>> print(island_perimeter(island))
-4
+0
 
 ###Top Right###
 >>> island = [
@@ -164,7 +164,7 @@ Edges
 ...     [0, 0, 0, 0, 0, 0, 0]
 ... ]
 >>> print(island_perimeter(island))
-4
+0
 
 ###Bottom left###
 >>> island = [
@@ -176,7 +176,7 @@ Edges
 ...     [0, 1, 0, 0, 0, 0, 0]
 ... ]
 >>> print(island_perimeter(island))
-4
+0
 
 ###Botom Right###
 >>> island = [
@@ -188,7 +188,7 @@ Edges
 ...     [0, 0, 0, 0, 0, 1, 0]
 ... ]
 >>> print(island_perimeter(island))
-4
+0
 
 ###Random Edge###
 >>> island = [
@@ -196,10 +196,10 @@ Edges
 ...     [0, 0, 0, 0, 0, 0, 0],
 ...     [0, 0, 0, 0, 0, 0, 0],
 ...     [0, 0, 0, 0, 0, 0, 0],
-...     [0, 0, 0, 0, 0, 0, 0]
+...     [0, 0, 0, 1, 0, 0, 0]
 ... ]
 >>> print(island_perimeter(island))
-4
+0
 
 >>> island = [
 ...     [0, 0, 0, 0, 0, 0, 0],
@@ -210,7 +210,7 @@ Edges
 ...     [0, 0, 0, 0, 0, 0, 0],
 ... ]
 >>> print(island_perimeter(island))
-4
+0
 
 >>> island = [
 ...     [0, 0, 0, 1, 0, 0, 0],
@@ -221,17 +221,18 @@ Edges
 ...     [0, 0, 0, 0, 0, 0, 0]
 ... ]
 >>> print(island_perimeter(island))
-4
+0
 
 >>> island = [
 ...     [0, 0, 0, 0, 0, 0, 0],
 ...     [0, 0, 0, 0, 0, 0, 0],
+...     [1, 0, 0, 0, 0, 0, 0],
 ...     [0, 0, 0, 0, 0, 0, 0],
 ...     [0, 0, 0, 0, 0, 0, 0],
-...     [0, 0, 1, 0, 0, 0, 0]
+...     [0, 0, 0, 0, 0, 0, 0]
 ... ]
 >>> print(island_perimeter(island))
-4
+0
 
 Random inside
 -------------
