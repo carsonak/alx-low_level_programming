@@ -174,16 +174,6 @@ def explorer(grid, peri, x, y, heading):
 
         return way
 
-    def print_islands():
-        print("{: <18s}\t{: <18s}\n{: <18s}\t{: <18s}".format(
-            "Island map", "Perimeter map",
-            ("-" * len("Island map")), ("-" * len("Perimeter map"))))
-
-        for row in range(len(grid)):
-            print(f"{grid[row]}\t{peri[row]}")
-        else:
-            print("")
-
     cardinal = ["N", "E", "S", "W"]
     pop = cardinal.index(heading)
     compass = {heading: grid[x][y]}
@@ -197,16 +187,16 @@ def explorer(grid, peri, x, y, heading):
             if not compass[point]:  # Mark perimeter
                 if point == "N":
                     peri[x - 1][y] += 1
-                    # print_islands()
+                    # print_islands(grid, peri)
                 elif point == "E":
                     peri[x][y + 1] += 1
-                    # print_islands()
+                    # print_islands(grid, peri)
                 elif point == "S":
                     peri[x + 1][y] += 1
-                    # print_islands()
+                    # print_islands(grid, peri)
                 elif point == "W":
                     peri[x][y - 1] += 1
-                    # print_islands()
+                    # print_islands(grid, peri)
 
         divert = path_split(cardinal[(pop+1) % 4], x, y)
         if divert:
@@ -228,6 +218,17 @@ def explorer(grid, peri, x, y, heading):
         compass = {heading: grid[x][y]}
 
 
+def print_islands(grid, perimeter):
+    print("{: <18s}\t{: <18s}\n{: <18s}\t{: <18s}".format(
+        "Island map", "Perimeter map",
+        ("-" * len("Island map")), ("-" * len("Perimeter map"))))
+
+    for row in range(len(grid)):
+        print(f"{grid[row]}\t{perimeter[row]}")
+    else:
+        print("")
+
+
 def island_perimeter(grid):
     """
     Calculate perimeter of an Island
@@ -240,12 +241,14 @@ def island_perimeter(grid):
     perimeter = [[0 for y in x] for x in grid]
     x, y, heading = first_cell(grid)
     total = 0
+    print_islands(grid, perimeter)
     if heading:
-        explorer(grid[:], perimeter, x, y, heading)
+        explorer([lat[:] for lat in grid], perimeter, x, y, heading)
         for row in perimeter:
             for cel in row:
                 total += cel
 
+    print_islands(grid, perimeter)
     return total
 
 
