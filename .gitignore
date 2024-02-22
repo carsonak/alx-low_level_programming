@@ -1,4 +1,9 @@
-#gitignore test files
+# ignore test files
 *main.c
-.vscode
 *.o
+
+# ignore vscode conffig files
+.vscode
+
+# ignore pycache
+__pycache__
