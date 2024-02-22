@@ -198,6 +198,7 @@ def explorer(grid, peri, x, y, heading):
                     peri[x][y - 1] += 1
                     # print_islands(grid, peri)
 
+        # Determine if there is a fork in the path
         divert = path_split(cardinal[(pop+1) % 4], x, y)
         if divert:
             explorer(grid, peri, divert[0], divert[1], cardinal[(pop+1) % 4])
@@ -215,23 +216,31 @@ def explorer(grid, peri, x, y, heading):
         elif heading == "W":
             y -= 1
 
-        compass = {heading: grid[x][y]}
+        compass = {heading: grid[x][y]}  # Update heading
 
 
-def print_islands(grid, perimeter):
+def print_islands(grid1, grid2):
+    """
+    Print the given grids side by side
+
+    Args:
+        grid1 (list(list)): the first 2D array
+        grid2 (list(list)): the second 2D array
+    """
+
     print("{: <18s}\t{: <18s}\n{: <18s}\t{: <18s}".format(
         "Island map", "Perimeter map",
         ("-" * len("Island map")), ("-" * len("Perimeter map"))))
 
     for row in range(len(grid)):
-        print(f"{grid[row]}\t{perimeter[row]}")
+        print(f"{grid1[row]}\t{grid2[row]}")
     else:
         print("")
 
 
 def island_perimeter(grid):
     """
-    Calculate perimeter of an Island
+    Wrapper function for calculating perimeter of an Island
 
     Args:
         grid (list[list[int]]): a 2d array of ints representing an island
@@ -241,26 +250,31 @@ def island_perimeter(grid):
     perimeter = [[0 for y in x] for x in grid]
     x, y, heading = first_cell(grid)
     total = 0
-    print_islands(grid, perimeter)
+    # print_islands(grid, perimeter)
     if heading:
         explorer([lat[:] for lat in grid], perimeter, x, y, heading)
         for row in perimeter:
             for cel in row:
                 total += cel
 
-    print_islands(grid, perimeter)
+    # print_islands(grid, perimeter)
     return total
 
 
 if __name__ == "__main__":
-    grid = [
-        [0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0],
-        [0, 1, 1, 1, 0, 0],
-        [0, 1, 1, 1, 0, 0],
-        [0, 1, 1, 1, 0, 0],
-        [0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0]
-    ]
+    def main():
+        """Entry point"""
 
-    print(island_perimeter(grid))
+        grid = [
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 1, 1, 1, 0, 0],
+            [0, 1, 1, 1, 0, 0],
+            [0, 1, 1, 1, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0]
+        ]
+
+        print(island_perimeter(grid))
+
+    main()
