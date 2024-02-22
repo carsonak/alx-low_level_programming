@@ -232,7 +232,7 @@ def print_islands(grid1, grid2):
         "Island map", "Perimeter map",
         ("-" * len("Island map")), ("-" * len("Perimeter map"))))
 
-    for row in range(len(grid)):
+    for row in range(len(grid1)):
         print(f"{grid1[row]}\t{grid2[row]}")
     else:
         print("")
