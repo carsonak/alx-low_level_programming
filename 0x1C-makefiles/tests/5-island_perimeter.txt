@@ -39,7 +39,7 @@ Vertical
 12
 
 Blocks
-------
+======
 
 >>> island = [
 ...     [0, 0, 0, 0, 0, 0, 0],
@@ -52,6 +52,9 @@ Blocks
 ... ]
 >>> print(island_perimeter(island))
 12
+
+On edges
+--------
 
 >>> island = [
 ...     [1, 1, 1],
@@ -80,6 +83,9 @@ Blocks
 ... ]
 >>> print(island_perimeter(island))
 12
+
+Random shapes
+-------------
 
 >>> island = [
 ...     [0, 0, 0, 0, 0, 0, 0],
