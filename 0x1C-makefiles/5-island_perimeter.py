@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """Module for island_perimeter and it's functions"""
-import numpy as np
 
 
 def check_grid(grid, cell_type, cell_range=None):
@@ -28,7 +27,7 @@ def check_grid(grid, cell_type, cell_range=None):
             if type(grid[row][col]) is not cell_type:
                 raise TypeError(f"cell[{row}][{col}] is not type {cell_type}")
 
-            if cell_range and cell_range[0] <= grid[row][col] <= cell_range[1]:
+            if cell_range and not (cell_range[0] <= grid[row][col] <= cell_range[1]):
                 raise ValueError(
                     f"Value of cell[{row}][{col}] is out of range")
 
@@ -52,38 +51,38 @@ def find_next(grid, x, y):
     # Check cells above (Northern)
     if x - 1 >= 0:
         # North
-        if y < len(grid[x - 1]) and grid[x - 1][y] == 1:
-            compass["N"] = 1
+        if y < len(grid[x - 1]):
+            compass["N"] = grid[x - 1][y]
 
         # North-East
-        if y + 1 < len(grid[x - 1]) and grid[x - 1][y + 1]:
-            compass["NE"] = 1
+        if y + 1 < len(grid[x - 1]):
+            compass["NE"] = grid[x - 1][y + 1]
 
         # North-West
-        if y - 1 >= 0 and grid[x - 1][y - 1]:
-            compass["NW"] = 1
+        if y - 1 >= 0:
+            compass["NW"] = grid[x - 1][y - 1]
 
     # Check cells below (Southern)
     if x + 1 < len(grid):
         # South
-        if y < len(grid[x + 1]) and grid[x + 1][y] == 1:
-            compass["S"] = 1
+        if y < len(grid[x + 1]):
+            compass["S"] = grid[x + 1][y]
 
         # South-East
-        if y + 1 < len(grid[x + 1]) and grid[x + 1][y + 1]:
-            compass["SE"] = 1
+        if y + 1 < len(grid[x + 1]):
+            compass["SE"] = grid[x + 1][y + 1]
 
         # South-West
-        if y - 1 >= 0 and grid[x + 1][y - 1]:
-            compass["SW"] = 1
+        if y - 1 >= 0:
+            compass["SW"] = grid[x + 1][y - 1]
 
     # Check cell on right (East)
-    if y + 1 < len(grid[x]) and grid[x][y + 1] == 1:
-        compass["E"] = 1
+    if y + 1 < len(grid[x]):
+        compass["E"] = grid[x][y + 1]
 
     # Check cell on the left (West)
-    if y - 1 >= 0 and grid[x][y - 1] == 1:
-        compass["W"] = 1
+    if y - 1 >= 0:
+        compass["W"] = grid[x][y - 1]
 
     return compass
 
@@ -173,28 +172,38 @@ def explorer(grid, peri, x, y, heading):
 
         return way
 
+    def print_islands():
+        print("{: <18s}\t{: <18s}\n{: <18s}\t{: <18s}".format(
+            "Island map", "Perimeter map",
+            ("-" * len("Island map")), ("-" * len("Perimeter map"))))
+
+        for row in range(len(grid)):
+            print(f"{grid[row]}\t{peri[row]}")
+        else:
+            print("")
+
     cardinal = ["N", "E", "S", "W"]
     pop = cardinal.index(heading)
-    compass = {heading: 1}
+    compass = {heading: grid[x][y]}
 
-    while compass[heading] and 0 < x < len(grid) - 1 and 0 < y < len(grid[x]) - 1:
+    while compass[heading] == 1 and 0 < x < len(grid) - 1 and 0 < y < len(grid[x]) - 1:
         compass = find_next(grid, x, y)  # Map adjacent cells
         grid[x][y] += 1  # Mark explored cell
+
         for point in cardinal:
-            if not compass[point]:
+            if not compass[point]:  # Mark perimeter
                 if point == "N":
                     peri[x - 1][y] += 1
+                    # print_islands()
                 elif point == "E":
                     peri[x][y + 1] += 1
+                    # print_islands()
                 elif point == "S":
                     peri[x + 1][y] += 1
+                    # print_islands()
                 elif point == "W":
                     peri[x][y - 1] += 1
-        else:
-            print(f"Island map\n" + "-" *
-                  len("Island map") + f"\n{grid}", end="\n\n")
-            print(f"Perimeter map\n" + "-" *
-                  len("Perimeter map") + f"\n{peri}", end="\n\n")
+                    # print_islands()
 
         divert = path_split(cardinal[(pop+1) % 4], x, y)
         if divert:
@@ -213,6 +222,8 @@ def explorer(grid, peri, x, y, heading):
         elif heading == "W":
             y -= 1
 
+        compass = {heading: grid[x][y]}
+
 
 def island_perimeter(grid):
     """
@@ -222,8 +233,8 @@ def island_perimeter(grid):
         grid (list[list[int]]): a 2d array of ints representing an island
     """
 
-    # check_grid(grid, int, (0, 1))
-    perimeter = np.array([[0 for y in x] for x in grid])
+    check_grid(grid, int, (0, 1))
+    perimeter = [[0 for y in x] for x in grid]
     x, y, heading = first_cell(grid)
     explorer(grid[:], perimeter, x, y, heading)
 
@@ -236,7 +247,7 @@ def island_perimeter(grid):
 
 
 if __name__ == "__main__":
-    grid = np.array([
+    grid = [
         [0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0],
         [0, 1, 1, 1, 0, 0],
@@ -244,6 +255,6 @@ if __name__ == "__main__":
         [0, 1, 1, 1, 0, 0],
         [0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0]
-    ])
+    ]
 
     print(island_perimeter(grid))

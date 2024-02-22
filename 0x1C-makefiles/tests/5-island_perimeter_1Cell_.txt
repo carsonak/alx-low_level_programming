@@ -7,18 +7,15 @@ Importing island_perimeter()
 
 >>> island_perimeter = __import__('5-island_perimeter').island_perimeter
 
->>> island = [
-...     [0, 0, 0, 0, 0, 0, 0],
-...     [0, 0, 0, 0, 0, 0, 0],
-...     [0, 0, 0, 0, 0, 0, 0],
-...     [0, 0, 0, 0, 0, 0, 0],
-...     [0, 0, 0, 0, 0, 0, 0],
-...     [0, 0, 0, 0, 0, 0, 0]
-... ]
-
 Empty Waters
 ------------
 
+>>> island = [
+...     [0, 0, 0, 0],
+...     [0, 0, 0, 0],
+...     [0, 0, 0, 0],
+...     [0, 0, 0, 0]
+... ]
 >>> print(island_perimeter(island))
 0
 
