@@ -1,5 +1,32 @@
 #!/usr/bin/python3
-"""Module for island_perimeter and it's functions"""
+"""
+Module for island_perimeter
+
+Functions:
+    island_perimeter(grid):
+        Wrapper function for calculating perimeter of an Island
+
+    check_grid(grid: list[list], cell_type: class, cell_range: tuple = None):
+        Check and values of all grid items
+
+    find_next(grid: list[list], x: int, y: int):
+        Return a dictionary with info about the cells around a coordinate
+
+    first_cell(grid: list[list]):
+        Find the first marked cell in the grid
+
+    explorer(grid, peri, x, y, heading):
+        Explore the grid (island) along one axis while marking peri (perimeter)
+
+        path_split(splt, x_ax, y_ax):
+                Determine if there is a fork in the given heading
+
+    print_islands(grid1, grid2):
+        Print the given grids side by side
+
+    grid_expand(mat_2d):
+        Return a copy of the 2D matrix padded with zeros on the outline
+"""
 
 
 def check_grid(grid, cell_type, cell_range=None):
@@ -241,7 +268,7 @@ def print_islands(grid1, grid2):
 def grid_expand(mat_2d):
     """Return a copy of the 2D matrix padded with zeros on the outline"""
 
-    c = [[y for y in x] for x in mat_2d]
+    c = [x[:] for x in mat_2d]
     c.insert(0, [0] * len(c[0]))
     c.append([0] * len(c[-1]))
     for row in c:
