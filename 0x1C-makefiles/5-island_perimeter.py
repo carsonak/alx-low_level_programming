@@ -27,7 +27,8 @@ def check_grid(grid, cell_type, cell_range=None):
             if type(grid[row][col]) is not cell_type:
                 raise TypeError(f"cell[{row}][{col}] is not type {cell_type}")
 
-            if cell_range and not (cell_range[0] <= grid[row][col] <= cell_range[1]):
+            if cell_range and\
+                    not (cell_range[0] <= grid[row][col] <= cell_range[1]):
                 raise ValueError(
                     f"Value of cell[{row}][{col}] is out of range")
 
@@ -103,23 +104,22 @@ def first_cell(grid):
             if col:
                 break
         else:
-            del (y)
+            y = -1
 
         if col:
             break
     else:
-        del (x)
+        x = -1
 
-    try:
+    if x >= 0 and y >= 0:
         compass = find_next(grid, x, y)
-    except NameError:
-        return
-
-    for hed, val in compass.items():
-        if len(hed) == 1 and val:
-            break
+        for hed, val in compass.items():
+            if len(hed) == 1 and val:
+                break
+        else:
+            hed = "N"
     else:
-        hed = "N"
+        hed = None
 
     return x, y, hed
 
@@ -156,8 +156,10 @@ def explorer(grid, peri, x, y, heading):
 
         way = None
         if compass[splt]:
-            if not (compass[splt + "E" if splt == "N" or splt == "S" else "N" + splt]
-                    and compass[splt + "W" if splt == "N" or splt == "S" else "S" + splt]):
+            if not (compass[splt + "E" if splt == "N" or
+                            splt == "S" else "N" + splt]
+                    and compass[splt + "W" if splt == "N" or
+                                splt == "S" else "S" + splt]):
                 if splt == "N":
                     x_ax -= 1
                 elif splt == "E":
@@ -186,7 +188,8 @@ def explorer(grid, peri, x, y, heading):
     pop = cardinal.index(heading)
     compass = {heading: grid[x][y]}
 
-    while compass[heading] == 1 and 0 < x < len(grid) - 1 and 0 < y < len(grid[x]) - 1:
+    while compass[heading] == 1 and 0 < x < len(grid) - 1 and\
+            0 < y < len(grid[x]) - 1:
         compass = find_next(grid, x, y)  # Map adjacent cells
         grid[x][y] += 1  # Mark explored cell
 
@@ -236,12 +239,12 @@ def island_perimeter(grid):
     check_grid(grid, int, (0, 1))
     perimeter = [[0 for y in x] for x in grid]
     x, y, heading = first_cell(grid)
-    explorer(grid[:], perimeter, x, y, heading)
-
     total = 0
-    for row in perimeter:
-        for cel in row:
-            total += cel
+    if heading:
+        explorer(grid[:], perimeter, x, y, heading)
+        for row in perimeter:
+            for cel in row:
+                total += cel
 
     return total
 
