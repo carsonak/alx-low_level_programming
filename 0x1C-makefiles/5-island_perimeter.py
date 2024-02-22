@@ -238,6 +238,19 @@ def print_islands(grid1, grid2):
         print("")
 
 
+def grid_expand(mat_2d):
+    """Return a copy of the 2D matrix padded with zeros on the outline"""
+
+    c = [[y for y in x] for x in mat_2d]
+    c.insert(0, [0] * len(c[0]))
+    c.append([0] * len(c[-1]))
+    for row in c:
+        row.insert(0, 0)
+        row.append(0)
+
+    return c
+
+
 def island_perimeter(grid):
     """
     Wrapper function for calculating perimeter of an Island
@@ -247,12 +260,13 @@ def island_perimeter(grid):
     """
 
     check_grid(grid, int, (0, 1))
-    perimeter = [[0 for y in x] for x in grid]
-    x, y, heading = first_cell(grid)
+    cpy = grid_expand(grid)
+    perimeter = [[0 for y in x] for x in cpy]
+    x, y, heading = first_cell(cpy)
     total = 0
     # print_islands(grid, perimeter)
     if heading:
-        explorer([lat[:] for lat in grid], perimeter, x, y, heading)
+        explorer(cpy, perimeter, x, y, heading)
         for row in perimeter:
             for cel in row:
                 total += cel
