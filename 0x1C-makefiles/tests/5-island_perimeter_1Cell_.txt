@@ -28,6 +28,10 @@ Empty Waters
 1 cell
 ======
 
+island = list([[1]])
+>>> print(island_perimeter(island))
+4
+
 Corners
 -------
 

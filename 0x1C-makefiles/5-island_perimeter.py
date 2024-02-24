@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""
-Module for island_perimeter
+"""Module for island_perimeter.
 
 Functions:
     island_perimeter(grid):
@@ -30,8 +29,7 @@ Functions:
 
 
 def check_grid(grid, cell_type, cell_range=None):
-    """
-    Check types and values of all grid items
+    """Check types and values of all grid items.
 
     Args:
         grid (list[list[any]]): a 2d array
@@ -42,7 +40,6 @@ def check_grid(grid, cell_type, cell_range=None):
         TypeError: Raised if grid is not a list of lists of ints
         ValueError: Raised if value of a cell is out of range
     """
-
     if type(grid) is not list:
         raise TypeError("grid must be a list of lists")
 
@@ -61,8 +58,7 @@ def check_grid(grid, cell_type, cell_range=None):
 
 
 def find_next(grid, x, y):
-    """
-    Return a dictionary with info about the cells around a coordinate
+    """Return a dictionary with info about the cells around a coordinate.
 
     Args:
         grid (list[list[int]]): a 2d array of ints representing an island
@@ -73,7 +69,6 @@ def find_next(grid, x, y):
         A dictionary of 8 compass headings each representing a cell adjacent to
         the current one and marked if viable path or not
     """
-
     compass = {"N": 0, "NE": 0, "E": 0, "SE": 0,
                "S": 0, "SW": 0, "W": 0, "NW": 0}
     # Check cells above (Northern)
@@ -116,8 +111,7 @@ def find_next(grid, x, y):
 
 
 def first_cell(grid):
-    """
-    Find the first marked cell in the grid
+    """Find the first marked cell in the grid.
 
     Args:
         grid (list[list[int]]): a 2d array of ints representing an island
@@ -125,7 +119,6 @@ def first_cell(grid):
     Return:
         Coordinates of the first cell and a compass heading for the next cell
     """
-
     for x, row in enumerate(grid):
         for y, col in enumerate(row):
             if col:
@@ -152,8 +145,7 @@ def first_cell(grid):
 
 
 def explorer(grid, peri, x, y, heading):
-    """
-    Explore the grid (island) along one axis while marking peri (perimeter)
+    """Explore the grid (island) along one axis while marking peri (perimeter).
 
     Args:
         grid (list[list[int]]): a 2d array of ints representing an island
@@ -167,10 +159,8 @@ def explorer(grid, peri, x, y, heading):
     Functions:
         path_split: finds forks along the path
     """
-
     def path_split(splt, x_ax, y_ax):
-        """
-        Determine if there is a fork in the given heading
+        """Determine if there is a fork in the given heading.
 
         Args:
             splt (str): The compass heading to check
@@ -180,7 +170,6 @@ def explorer(grid, peri, x, y, heading):
         Return:
             A tuple of the of the cell to divert to if fork is found else none
         """
-
         way = None
         if compass[splt]:
             if not (compass[splt + "E" if splt == "N" or
@@ -247,14 +236,12 @@ def explorer(grid, peri, x, y, heading):
 
 
 def print_islands(grid1, grid2):
-    """
-    Print the given grids side by side
+    """Print the given grids side by side.
 
     Args:
         grid1 (list(list)): the first 2D array
         grid2 (list(list)): the second 2D array
     """
-
     print("{: <18s}\t{: <18s}\n{: <18s}\t{: <18s}".format(
         "Island map", "Perimeter map",
         ("-" * len("Island map")), ("-" * len("Perimeter map"))))
@@ -266,8 +253,7 @@ def print_islands(grid1, grid2):
 
 
 def grid_expand(mat_2d):
-    """Return a copy of the 2D matrix padded with zeros on the outline"""
-
+    """Return a copy of the 2D matrix padded with zeros on the edges."""
     c = [x[:] for x in mat_2d]
     c.insert(0, [0] * len(c[0]))
     c.append([0] * len(c[-1]))
@@ -279,13 +265,11 @@ def grid_expand(mat_2d):
 
 
 def island_perimeter(grid):
-    """
-    Wrapper function for calculating perimeter of an Island
+    """Calculate perimeter of an Island.
 
     Args:
         grid (list[list[int]]): a 2d array of ints representing an island
     """
-
     check_grid(grid, int, (0, 1))
     cpy = grid_expand(grid)
     perimeter = [[0 for y in x] for x in cpy]
@@ -304,8 +288,7 @@ def island_perimeter(grid):
 
 if __name__ == "__main__":
     def main():
-        """Entry point"""
-
+        """Entry point."""
         grid = [
             [0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0],
