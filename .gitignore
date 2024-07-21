@@ -6,4 +6,4 @@
 .vscode
 
 # ignore pycache
-__pycache__
+*cache*
