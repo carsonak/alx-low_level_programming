@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- *cap_string - capitalises only words of a string.
- *@a: string.
+ * cap_string - capitalises only words of a string.
+ * @a: string.
  *
- *Return: pointer to the new string.
+ * Return: pointer to the new string.
  */
 char *cap_string(char *a)
 {
@@ -19,10 +19,10 @@ char *cap_string(char *a)
 }
 
 /**
- *wrdSep - checks whether the character is a word separator.
- *@c: character to be checked.
+ * wrdSep - checks whether the character is a word separator.
+ * @c: character to be checked.
  *
- *Return: boolean true or false.
+ * Return: boolean true or false.
  */
 bool wrdSep(char c)
 {

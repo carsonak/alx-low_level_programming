@@ -7,7 +7,6 @@
  *
  * Return: NULL if fail, pointer to an array of pointers.
  */
-
 int **alloc_grid(int width, int height)
 {
 	int i, h, w, **grd;

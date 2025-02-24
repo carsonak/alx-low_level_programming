@@ -2,12 +2,11 @@
 #include <stdio.h>
 
 /**
- *fizz_buzz - prints 1 - 100, except it replaces multiples of 3 & 5
- *with fizz and buzz.
+ * fizz_buzz - prints 1 - 100, except it replaces multiples of 3 & 5
+ * with fizz and buzz.
  *
- *Return: void if sucessful.
+ * Return: void if sucessful.
  */
-
 void fizz_buzz(void)
 {
 	int i;
@@ -34,11 +33,10 @@ void fizz_buzz(void)
 }
 
 /**
- *main - calls fizz_buzz
+ * main - calls fizz_buzz
  *
- *Return: 0 if sucessful
+ * Return: 0 if sucessful
  */
-
 int main(void)
 {
 	fizz_buzz();

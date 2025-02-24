@@ -1,33 +1,37 @@
+#include <limits.h>
+
 #include "main.h"
 
-/**
- *_strspn - checks for similar characters in different strings
- *@s: String to be checked
- *@accept: the check string
- *
- *Return: the total size of checked strings.
- */
+static void init_char_sieve(
+	unsigned char *const char_sieve, const char *const accept)
+{
+	size_t i;
 
+	for (i = 0; accept[i]; i++)
+		char_sieve[(unsigned char)accept[i]] = 1;
+}
+
+static unsigned int char_in_sieve(
+	unsigned char const *const char_sieve, const unsigned char c)
+{
+	return (char_sieve[c]);
+}
+
+/**
+ * _strspn - gets length of a prefix substring with a fixed set of characters.
+ * @s: string to be checked.
+ * @accept: the set of characters to look for.
+ *
+ * Return: length of the prefix substring.
+ */
 unsigned int _strspn(char *s, char *accept)
 {
-	unsigned long int i, j;
-	unsigned int b, a = 0;
+	unsigned int i = 0;
+	unsigned char char_sieve[UCHAR_MAX + 1] = {0};
 
-	for (i = 0; i < strlen(s); i++)
-	{
-		b = a;
-		for (j = 0; j < strlen(accept); j++)
-		{
-			if (accept[j] == s[i])
-			{
-				a++;
-			}
-		}
-		if (accept[j] == '\0' && a - b == 0)
-		{
-			break;
-		}
-	}
+	init_char_sieve(char_sieve, accept);
+	while (s[i] && char_in_sieve(char_sieve, s[i]))
+		i++;
 
-	return (a);
+	return (i);
 }

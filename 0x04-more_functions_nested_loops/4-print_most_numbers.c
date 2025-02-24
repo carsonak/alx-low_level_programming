@@ -2,11 +2,10 @@
 #include "main.h"
 
 /**
- *print_most_numbers - prints numbers 0 - 9, except 2 & 4
+ * print_most_numbers - prints numbers 0 - 9, except 2 & 4
  *
- *Return: void if sucessful.
+ * Return: void if sucessful.
  */
-
 void print_most_numbers(void)
 {
 	char i;

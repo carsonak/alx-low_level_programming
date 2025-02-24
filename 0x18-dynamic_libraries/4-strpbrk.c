@@ -24,7 +24,6 @@ static unsigned int char_in_sieve(
  *
  * Return: a pointer to the byte in `s` that matched, NULL if none.
  */
-
 char *_strpbrk(char *s, char *accept)
 {
 	unsigned char char_sieve[UCHAR_MAX + 1] = {0};

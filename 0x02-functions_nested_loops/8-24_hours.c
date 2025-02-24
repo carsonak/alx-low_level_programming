@@ -3,10 +3,9 @@
 #include <unistd.h>
 
 /**
- *jack_bauer - 24
+ * jack_bauer - 24
  *
  */
-
 void jack_bauer(void)
 {
 	int h, m;

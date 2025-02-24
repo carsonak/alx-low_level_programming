@@ -4,11 +4,10 @@
 #include <fcntl.h>
 
 /**
- *main - prints text to standard output
+ * main - prints text to standard output
  *
- *Return: (1) if successful.
+ * Return: (1) if successful.
  */
-
 int main(void)
 {
 	/*int fd;*/
@@ -21,6 +20,5 @@ int main(void)
 	 */
 	write(STDOUT_FILENO, buffer, strlen(buffer));
 	/*close(fd);*/
-
 	return (1);
 }

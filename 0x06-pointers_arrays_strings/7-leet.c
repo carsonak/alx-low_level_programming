@@ -1,8 +1,8 @@
 #include "main.h"
 
 /**
- *leet - converts to 1337
- *@a: string.
+ * leet - converts to 1337
+ * @a: string.
  *
  * Return: pointer to converted string
  */

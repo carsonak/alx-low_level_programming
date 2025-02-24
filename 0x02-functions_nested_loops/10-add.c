@@ -3,13 +3,12 @@
 #include "main.h"
 
 /**
- *add - Adds tro numbers
- *@a: First Integer
- *@b: Second Integer
+ * add - Adds tro numbers
+ * @a: First Integer
+ * @b: Second Integer
  *
- *Return: The sum
+ * Return: The sum
  */
-
 int add(int a, int b)
 {
 	int sum;

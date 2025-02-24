@@ -1,10 +1,9 @@
 #include "main.h"
 
 /**
- *puts_half - prints out last half of a string
- *@str: the string
+ * puts_half - prints out last half of a string
+ * @str: the string
  */
-
 void puts_half(char *str)
 {
 	int a, i;

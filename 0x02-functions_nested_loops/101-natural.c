@@ -3,11 +3,10 @@
 #include "main.h"
 
 /**
- *sum_35 - Gets thesum of all multiples 3 & 5 upto a specified range
+ * sum_35 - Gets thesum of all multiples 3 & 5 upto a specified range
  *
- *Return: void
+ * Return: void
  */
-
 void sum_35(void)
 {
 	int i, sum;
@@ -23,11 +22,10 @@ void sum_35(void)
 }
 
 /**
- *main - calls sum_35
+ * main - calls sum_35
  *
- *Return: 0 always
+ * Return: 0 always
  */
-
 int main(void)
 {
 	sum_35();

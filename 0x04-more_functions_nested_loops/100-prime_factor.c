@@ -2,11 +2,10 @@
 #include "main.h"
 
 /**
- *lprime - prints largest prime factor of a number
+ * lprime - prints largest prime factor of a number
  *
- *Return: void
+ * Return: void
  */
-
 void lprime(void)
 {
 	unsigned long int x, a, b;
@@ -27,11 +26,10 @@ void lprime(void)
 }
 
 /**
- *main - calls lprime
+ * main - calls lprime
  *
- *Return: 0 always.
+ * Return: 0 always.
  */
-
 int main(void)
 {
 	lprime();

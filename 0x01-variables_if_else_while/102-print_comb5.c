@@ -1,11 +1,10 @@
 #include <stdio.h>
 /**
- *main - Prints all combinations of pairs of two digit decimals with no
- *repetition.
+ * main - Prints all combinations of pairs of two digit decimals with no
+ * repetition.
  *
- *Return: (0) if succesful
+ * Return: (0) if succesful
  */
-
 int main(void)
 {
 	int a, b, c, d;

@@ -7,7 +7,6 @@
  *
  * Return: pointer to the modified buffer.
  */
-
 char *_strcpy(char *dest, char *src)
 {
 	size_t i = 0;

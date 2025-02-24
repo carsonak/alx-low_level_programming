@@ -2,12 +2,11 @@
 #include <unistd.h>
 
 /**
- *print_square - prints a square of #
- *@s: size of the square
+ * print_square - prints a square of #
+ * @s: size of the square
  *
- *Return: void
+ * Return: void
  */
-
 void print_square(int s)
 {
 	int i, j;

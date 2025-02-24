@@ -2,11 +2,10 @@
 #include "main.h"
 
 /**
- *print_alphabet_x10 - prints alphabet in lower case x 10.
+ * print_alphabet_x10 - prints alphabet in lower case x 10.
  *
- *Return: void if sucessful.
+ * Return: void if sucessful.
  */
-
 void print_alphabet_x10(void)
 {
 	char i;

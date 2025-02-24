@@ -22,7 +22,6 @@ static unsigned char _isdigit_hidden(char c)
  *
  * Return: the integer in the string `s`.
  */
-
 int _atoi(char *s)
 {
 	unsigned int output = 0;

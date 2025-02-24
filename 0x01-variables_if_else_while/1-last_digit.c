@@ -3,10 +3,10 @@
 #include <stdio.h>
 
 /**
- *main - generates a random number, then prints the last digit and checks
- *its value.
+ * main - generates a random number, then prints the last digit and checks
+ * its value.
  *
- *Return: (0) if sucessful
+ * Return: (0) if sucessful
  */
 int main(void)
 {

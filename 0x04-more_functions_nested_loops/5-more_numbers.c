@@ -2,11 +2,10 @@
 #include "main.h"
 
 /**
- *more_numbers - prints numbers 0 - 14
+ * more_numbers - prints numbers 0 - 14
  *
- *Return: void if sucessful.
+ * Return: void if sucessful.
  */
-
 void more_numbers(void)
 {
 	char i, j;

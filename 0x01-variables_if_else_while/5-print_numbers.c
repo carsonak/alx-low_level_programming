@@ -1,11 +1,10 @@
 #include <stdio.h>
 
 /**
- *main - Prints all single digit decimals
+ * main - Prints all single digit decimals
  *
- *Return: (0) if sucessful
+ * Return: (0) if sucessful
  */
-
 int main(void)
 {
 	int i;

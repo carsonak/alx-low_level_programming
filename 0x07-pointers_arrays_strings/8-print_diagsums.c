@@ -1,11 +1,10 @@
 #include "main.h"
 
 /**
- *print_diagsums - prints sum of diagonals of a square array.
- *@a: square arraay
- *@size: size of the square
+ * print_diagsums - prints sum of diagonals of a square array.
+ * @a: square arraay
+ * @size: size of the square
  */
-
 void print_diagsums(int *a, int size)
 {
 	int index, j, mul;

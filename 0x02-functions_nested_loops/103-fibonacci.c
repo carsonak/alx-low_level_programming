@@ -1,12 +1,11 @@
 #include <stdio.h>
 
 /**
- *fibonacciSM - prints out the sum of all even fibonacci
- *numbers below 4,000,000
+ * fibonacciSM - prints out the sum of all even fibonacci
+ * numbers below 4,000,000
  *
- *Return: void
+ * Return: void
  */
-
 void fibonacciSM(void)
 {
 	long int a, b, c, sum;
@@ -30,11 +29,10 @@ void fibonacciSM(void)
 }
 
 /**
- *main - calls fibonacciSM
+ * main - calls fibonacciSM
  *
- *Return: 0
+ * Return: 0
  */
-
 int main(void)
 {
 	fibonacciSM();

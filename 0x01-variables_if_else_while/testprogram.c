@@ -1,10 +1,9 @@
 #include <stdio.h>
 /**
- *main - prints
+ * main - prints
  *
- *Return: 0 if sucessful
+ * Return: 0 if sucessful
  */
-
 int main(void)
 {
 	int a = 0;

@@ -1,6 +1,3 @@
-#include "main.h"
-#ifndef _PUTCHAR_
-#define _PUTCHAR_
 #include <unistd.h>
 
 /**
@@ -14,5 +11,3 @@ int _putchar(char c)
 {
 	return (write(1, &c, 1));
 }
-
-#endif /*_PUTCHAR_*/

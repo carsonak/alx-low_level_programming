@@ -1,11 +1,10 @@
 #include "main.h"
 /**
- *print_number - prints the given number
- *@n: an integer
+ * print_number - prints the given number
+ * @n: an integer
  *
- *Return: void
+ * Return: void
  */
-
 void print_number(int n)
 {
 	unsigned int num, div = 1;

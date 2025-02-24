@@ -1,17 +1,15 @@
 #include "main.h"
 
 /**
- *_puts - prints out a string
- *@str: the string
+ * _puts - prints out a string then a line.
+ * @str: the string
  */
-
 void _puts(char *str)
 {
-	int a, i;
+	size_t i;
 
-	a = strlen(str) - 1;
-
-	for (i = 0; i <= a; i++)
+	for (i = 0; *(str + i); i++)
 		_putchar(*(str + i));
+
 	_putchar('\n');
 }

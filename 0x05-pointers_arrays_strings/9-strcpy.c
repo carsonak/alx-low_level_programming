@@ -1,20 +1,22 @@
 #include "main.h"
 
 /**
- *_strcpy - copies a string to a buffer
- *@src: the string to be copied
- *@dest: pointer to the buffer
+ * _strcpy - copies a string into a buffer.
+ * @src: the string to copy.
+ * @dest: pointer to the buffer.
  *
- *Return: pointer to the buffer
+ * Return: pointer to the modified buffer.
  */
-
 char *_strcpy(char *dest, char *src)
 {
-	unsigned long int a, i;
+	size_t i = 0;
 
-	a = strlen(src);
-	for (i = 0; i <= a; i++)
+	while (src[i])
+	{
 		*(dest + i) = *(src + i);
+		i++;
+	}
 
+	dest[i] = '\0';
 	return (dest);
 }

@@ -1,11 +1,10 @@
 #include <stdio.h>
 
 /**
- *main - Prints lowercase then uppercase letters.
+ * main - Prints lowercase then uppercase letters.
  *
- *Return: (0) if sucessful
+ * Return: (0) if sucessful
  */
-
 int main(void)
 {
 	int i;

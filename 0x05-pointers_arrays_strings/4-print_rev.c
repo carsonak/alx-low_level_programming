@@ -1,8 +1,8 @@
 #include "main.h"
 
 /**
- *print_rev - prints out a string in reverse
- *@s: the string
+ * print_rev - prints out a string in reverse
+ * @s: the string
  */
 void print_rev(char *s)
 {
@@ -15,12 +15,11 @@ void print_rev(char *s)
 }
 
 /**
- *_strlen - prints string length.
- *@s: string
+ * _strlen - prints string length.
+ * @s: string
  *
- *Return: lenth of the string
+ * Return: lenth of the string
  */
-
 int _strlen(char *s)
 {
 	int i, cnt = 0;

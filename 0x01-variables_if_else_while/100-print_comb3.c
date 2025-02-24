@@ -1,14 +1,12 @@
 #include <stdio.h>
 /**
- *main - Prints all combinations of two digit decimals with no repetition
+ * main - Prints all combinations of two digit decimals with no repetition
  *
- *Return: (0) if sucessful
+ * Return: (0) if sucessful
  */
-
 int main(void)
 {
 	int ei, zw;/*Initialise 1st and 2nd digit*/
-
 	/*Increment 1st from 0-8*/
 	for (ei = 0; ei < 9; ei++)
 	{
@@ -17,7 +15,6 @@ int main(void)
 		{
 			putchar(ei + '0');/*Print 1st*/
 			putchar(zw + '0');/*Print 2nd*/
-
 			/*Check if both numbers have reached thair max values*/
 			if (ei == 8 && zw == 9)
 				break;

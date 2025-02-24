@@ -24,14 +24,13 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 }
 
 /**
- *_memset - fills a memory with a constant byte.
- *@buffer: pointer to the buffer
- *@ch: ASCII of the character to be used
- *@n: number of times the character will be repeated
+ * _memset - fills a memory with a constant byte.
+ * @buffer: pointer to the buffer
+ * @ch: ASCII of the character to be used
+ * @n: number of times the character will be repeated
  *
- *Return: pointer to the string
+ * Return: pointer to the string
  */
-
 void *_memset(void *buffer, int ch, size_t n)
 {
 	size_t i = 0;

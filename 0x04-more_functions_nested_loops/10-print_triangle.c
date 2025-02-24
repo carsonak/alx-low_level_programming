@@ -2,12 +2,11 @@
 #include <unistd.h>
 
 /**
- *print_triangle - prints a triangle of #
- *@s: size of the triangle
+ * print_triangle - prints a triangle of #
+ * @s: size of the triangle
  *
- *Return: void
+ * Return: void
  */
-
 void print_triangle(int s)
 {
 	int i, j, k;

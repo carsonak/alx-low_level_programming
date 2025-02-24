@@ -1,11 +1,10 @@
 #include <stdio.h>
 
 /**
- *main - Prints all base 16 digits
+ * main - Prints all base 16 digits
  *
- *Return: (0) if sucessful
+ * Return: (0) if sucessful
  */
-
 int main(void)
 {
 	int i;

@@ -3,12 +3,11 @@
 #include "main.h"
 
 /**
- *print_to_98 - prints from the give number to 98
- *@u: Starting point int
+ * print_to_98 - prints from the give number to 98
+ * @u: Starting point int
  *
- *Return: void
+ * Return: void
  */
-
 void print_to_98(int u)
 {
 	int i;

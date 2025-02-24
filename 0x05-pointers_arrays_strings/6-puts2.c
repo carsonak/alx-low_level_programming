@@ -1,10 +1,9 @@
 #include "main.h"
 
 /**
- *puts2 - prints out every other character of a string
- *@str: the string
+ * puts2 - prints out every other character of a string
+ * @str: the string
  */
-
 void puts2(char *str)
 {
 	int a, i;

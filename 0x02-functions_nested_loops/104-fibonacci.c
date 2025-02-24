@@ -1,11 +1,10 @@
 #include <stdio.h>
 
 /**
- *fibonacci98 - prints out the first 50 fibonacci numbers
+ * fibonacci98 - prints out the first 50 fibonacci numbers
  *
- *Return: void
+ * Return: void
  */
-
 void fibonacci98(void)
 {
 	unsigned long int i, a, b, c;
@@ -26,11 +25,10 @@ void fibonacci98(void)
 }
 
 /**
- *main - calls fibonacci
+ * main - calls fibonacci
  *
- *Return: 0
+ * Return: 0
  */
-
 int main(void)
 {
 	fibonacci98();

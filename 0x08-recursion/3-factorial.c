@@ -6,7 +6,6 @@
  *
  * Return: -1 if the number is negative. factorial of the number
  */
-
 int factorial(int n)
 {
 	if (n < 0)

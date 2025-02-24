@@ -1,8 +1,8 @@
 #include "main.h"
 
 /**
- *rot13 - rot13 cypher
- *@aStr: string to be encrypted.
+ * rot13 - rot13 cypher
+ * @aStr: string to be encrypted.
  *
  * Return: pointer to converted string
  */

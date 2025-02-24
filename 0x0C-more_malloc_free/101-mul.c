@@ -142,10 +142,10 @@ char *infiX_add(char *n1, char *n2)
 }
 
 /**
- *_strlen - calculates length of a string
- *@s: the string
+ * _strlen - calculates length of a string
+ * @s: the string
  *
- *Return: length of the string
+ * Return: length of the string
  */
 ssize_t _strlen(char *s)
 {

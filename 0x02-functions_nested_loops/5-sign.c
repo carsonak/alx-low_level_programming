@@ -3,12 +3,11 @@
 #include <unistd.h>
 
 /**
- *print_sign - checks for sign of number.
- *@n: signed int to be checked.
+ * print_sign - checks for sign of number.
+ * @n: signed int to be checked.
  *
- *Return: 1 if +ve, 0 if zero and -1 if -ve.
+ * Return: 1 if +ve, 0 if zero and -1 if -ve.
  */
-
 int print_sign(int n)
 {
 	if (n > 0)

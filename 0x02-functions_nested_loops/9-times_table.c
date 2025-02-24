@@ -3,11 +3,10 @@
 #include <stdio.h>
 
 /**
- *times_table - prints the times table
+ * times_table - prints the times table
  *
- *Return: void
+ * Return: void
  */
-
 void times_table(void)
 {
 	int l, r, prod;

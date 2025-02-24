@@ -1,10 +1,9 @@
 #include <stdio.h>
 /**
- *main - A program that prints a combination of numbers
+ * main - A program that prints a combination of numbers
  *
- *Return: 0 if succesful
+ * Return: 0 if succesful
  */
-
 int main(void)
 {
 	int a, b;

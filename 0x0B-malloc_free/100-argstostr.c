@@ -7,7 +7,6 @@
  *
  * Return: pointer to final string
  */
-
 char *argstostr(int ac, char **av)
 {
 	char *arg, *str = "";
@@ -33,13 +32,12 @@ char *argstostr(int ac, char **av)
 }
 
 /**
- *_strcat - Appends a string to another string.
- *@dest: string to be extended.
- *@src: string to be appended.
+ * _strcat - Appends a string to another string.
+ * @dest: string to be extended.
+ * @src: string to be appended.
  *
  * Return: pointer to final string.
  */
-
 char *_strcat(char *dest, char *src)
 {
 	unsigned long int i, j;
@@ -51,7 +49,6 @@ char *_strcat(char *dest, char *src)
 	}
 
 	/*printf("%s", dest);*/
-
 	j = 0;
 	while (j <= strlen(src))
 	{
@@ -61,6 +58,5 @@ char *_strcat(char *dest, char *src)
 	}
 
 	/*printf(" : %s", dest);*/
-
 	return (dest);
 }

@@ -2,11 +2,10 @@
 #include <time.h>
 #include <stdio.h>
 /**
- *main - generates a random number and checks whether +ve or -ve
+ * main - generates a random number and checks whether +ve or -ve
  *
- *Return: (0) if succesful
+ * Return: (0) if succesful
  */
-
 int main(void)
 {
 	int n;

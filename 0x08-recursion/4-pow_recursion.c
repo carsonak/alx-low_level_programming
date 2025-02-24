@@ -7,7 +7,6 @@
  *
  * Return: -1 if the number is negative or power of x to y if succesful
  */
-
 int _pow_recursion(int x, int y)
 {
 	if (y < 0)

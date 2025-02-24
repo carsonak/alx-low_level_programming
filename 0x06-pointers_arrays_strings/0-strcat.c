@@ -1,30 +1,28 @@
 #include "main.h"
 
 /**
- *_strcat - Appends a string to another string.
- *@dest: string to be extended.
- *@src: string to be appended.
+ * _strcat - Appends a string to another string.
+ * @dest: string to be extended.
+ * @src: string to be appended.
  *
  * Return: pointer to final string.
  */
-
 char *_strcat(char *dest, char *src)
 {
-	unsigned long int i, j;
+	size_t i = 0, j = 0;
 
-	i = 0;
-	while (dest[i] != '\0')
+	while (dest[i])
 	{
 		i++;
 	}
 
-	j = 0;
-	while (j <= strlen(src))
+	while (src[j])
 	{
 		dest[i] = src[j];
 		i++;
 		j++;
 	}
 
+	dest[i] = 0;
 	return (dest);
 }

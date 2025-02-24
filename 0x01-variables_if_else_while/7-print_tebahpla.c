@@ -1,11 +1,10 @@
 #include <stdio.h>
 
 /**
- *main - Prints lowercase letters in reverse
+ * main - Prints lowercase letters in reverse
  *
- *Return: (0) if sucessful
+ * Return: (0) if sucessful
  */
-
 int main(void)
 {
 	int i;

@@ -1,11 +1,10 @@
 #include <stdio.h>
 
 /**
- *main - Prints lowercase Alhabets except for q and e
+ * main - Prints lowercase Alhabets except for q and e
  *
- *Return: (0) if sucessful
+ * Return: (0) if sucessful
  */
-
 int main(void)
 {
 	char i;

@@ -5,7 +5,6 @@
  * @grid: pointer to an array of pointers (the 2d array)
  * @height: number of rows in the Array.
  */
-
 void free_grid(int **grid, int height)
 {
 	int i;

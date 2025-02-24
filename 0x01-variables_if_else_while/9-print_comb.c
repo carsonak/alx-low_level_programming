@@ -1,12 +1,11 @@
 #include <stdio.h>
 
 /**
- *main - Prints all single digit Decimals separated by commas
- *and spaces
+ * main - Prints all single digit Decimals separated by commas
+ * and spaces
  *
- *Return: (0) if sucessful
+ * Return: (0) if sucessful
  */
-
 int main(void)
 {
 	int i;

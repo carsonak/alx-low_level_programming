@@ -9,7 +9,6 @@
  *
  * Return: pointer to the new string, NULL if malloc fails.
  */
-
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *bGstr;
@@ -45,13 +44,12 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 }
 
 /**
- *_strcpy - copies a string to a buffer
- *@src: the string to be copied
- *@dest: pointer to buffer
+ * _strcpy - copies a string to a buffer
+ * @src: the string to be copied
+ * @dest: pointer to buffer
  *
- *Return: *dest
+ * Return: *dest
  */
-
 char *_strcpy(char *dest, char *src)
 {
 	int a, i;
@@ -69,10 +67,10 @@ char *_strcpy(char *dest, char *src)
 }
 
 /**
- *_strncat - concatinates 2 strings with at most n characters from src.
- *@dest: first string.
- *@src: second string.
- *@n: max number of characters to be added.
+ * _strncat - concatinates 2 strings with at most n characters from src.
+ * @dest: first string.
+ * @src: second string.
+ * @n: max number of characters to be added.
  *
  * Return: pointer to the result string.
  */

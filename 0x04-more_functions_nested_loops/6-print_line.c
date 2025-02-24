@@ -2,12 +2,11 @@
 #include <unistd.h>
 
 /**
- *print_line - prints a line of size n
- *@n: number of lines to be printed
+ * print_line - prints a line of size n
+ * @n: number of lines to be printed
  *
- *Return: void
+ * Return: void
  */
-
 void print_line(int n)
 {
 	int i;

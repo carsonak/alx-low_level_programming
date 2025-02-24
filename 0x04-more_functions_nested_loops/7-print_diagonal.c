@@ -2,12 +2,11 @@
 #include <unistd.h>
 
 /**
- *print_diagonal - prints a diagonal line
- *@n: number of lines to be printed
+ * print_diagonal - prints a diagonal line
+ * @n: number of lines to be printed
  *
- *Return: void
+ * Return: void
  */
-
 void print_diagonal(int n)
 {
 	int i, j;

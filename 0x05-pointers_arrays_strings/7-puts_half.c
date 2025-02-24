@@ -1,10 +1,25 @@
 #include "main.h"
 
 /**
- *puts_half - prints out last half of a string
- *@str: the string
+ * _strlen - prints string length.
+ * @arr: string
+ *
+ * Return: length of the string
  */
+static int _strlen(char *arr)
+{
+	int i, cnt = 0;
 
+	for (i = 0; arr[i] != '\0'; i++)
+		cnt++;
+
+	return (cnt);
+}
+
+/**
+ * puts_half - prints out last half of a string.
+ * @str: the string
+ */
 void puts_half(char *str)
 {
 	int i, n, max_str;
@@ -23,21 +38,4 @@ void puts_half(char *str)
 			_putchar(*(str + i));
 		_putchar('\n');
 	}
-}
-
-/**
- *_strlen - prints string length.
- *@arr: string
- *
- *Return: lenth of the string
- */
-
-int _strlen(char *arr)
-{
-	int i, cnt = 0;
-
-	for (i = 0; arr[i] != '\0'; i++)
-		cnt++;
-
-	return (cnt);
 }
