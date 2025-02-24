@@ -1,9 +1,12 @@
-# ignore test files
+# test files
 *main.c
 *.o
 
-# ignore vscode conffig files
+# vscode conffig files
 .vscode
 
-# ignore pycache
+# pycache
 *cache*
+
+# binary files
+a.out
