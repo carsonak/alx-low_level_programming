@@ -4,7 +4,7 @@
 /**
  *print_alphabet - prints alphabet in lower case.
  *
- *Return: void if sucessful.
+ *Return: void if successful.
  */
 
 void print_alphabet(void)
@@ -13,5 +13,6 @@ void print_alphabet(void)
 
 	for (i = 'a'; i <= 'z'; i++)
 		putchar(i);
+
 	putchar('\n');
 }

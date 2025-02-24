@@ -1,18 +1,15 @@
-#include <stdio.h>
 #include "main.h"
-#include <unistd.h>
 
 /**
- *_abs - prints the absolute value of a number.
- *@n: signed int to be checked.
+ * _abs - return the absolute value of a number.
+ * @n: signed number to convert.
  *
- *Return: absolute value of n.
+ * Return: absolute value of n.
  */
-
 int _abs(int n)
 {
 	if (n >= 0)
 		return (n);
-	else
-		return (n * -1);
+
+	return (-n);
 }
