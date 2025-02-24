@@ -8,6 +8,7 @@
 int main(void)
 {
 	int ei, zw, dr;/*Initialise 1st and 2nd digit*/
+
 	for (ei = 0; ei < 8; ei++)/*Increment 1st from 0-7*/
 	{
 		/*Increment 2nd from value of 1st to 9*/
