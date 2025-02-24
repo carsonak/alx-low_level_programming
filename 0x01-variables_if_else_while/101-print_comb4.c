@@ -3,7 +3,7 @@
 /**
  * main - Prints all combinations of three digit decimals with no repetition
  *
- * Return: (0) if succesful
+ * Return: (0) if successful
  */
 int main(void)
 {
