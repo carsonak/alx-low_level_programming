@@ -3,12 +3,12 @@
 #include "main.h"
 
 /**
- * _isdigit - check for decimal characters.
+ * _isdigit_hidden - check for decimal characters.
  * @c: character to be checked.
  *
  * Return: 1 if true, 0 if false.
  */
-static unsigned char _isdigit(char c)
+static unsigned char _isdigit_hidden(char c)
 {
 	if (c >= '0' && c <= '9')
 		return (1);
@@ -29,7 +29,7 @@ int _atoi(char *s)
 	size_t i = 0;
 	unsigned char is_negative = 0;
 
-	while (s[i] && !_isdigit(s[i]))
+	while (s[i] && !_isdigit_hidden(s[i]))
 	{
 		if (s[i] == '-')
 			is_negative = !is_negative;
@@ -37,7 +37,7 @@ int _atoi(char *s)
 		i++;
 	}
 
-	while (s[i] && _isdigit(s[i]))
+	while (s[i] && _isdigit_hidden(s[i]))
 	{
 		if ((output * 10) + (s[i] - '0') > INT_MAX)
 			break;
