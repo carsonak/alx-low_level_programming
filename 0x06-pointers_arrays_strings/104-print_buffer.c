@@ -17,7 +17,7 @@ void print_buffer(char *b, int size)
 	{
 		unsigned int p_i;
 		/* print index of every 10th byte. */
-		printf("%.08x: ", b_i);
+		printf("%.8x: ", b_i);
 		for (p_i = 0; p_i < 10; ++p_i)
 		{
 			if (b_i >= size)
