@@ -4,13 +4,8 @@
 #include <string.h>
 #include <unistd.h>
 #include <stdio.h>
-#include <limits.h>
-#include <stdlib.h>
-#include <stdbool.h>
+
 int _putchar(char c);
-bool wrdSep(char c);
-void wrtArr(unsigned long int n, char *arr);
-int buffSz(unsigned long int n);
 char *_strcat(char *dest, char *src);
 char *_strncat(char *dest, char *src, int n);
 char *_strncpy(char *dest, char *src, int n);

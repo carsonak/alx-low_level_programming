@@ -1,38 +1,53 @@
+#include <ctype.h>
+#include <stdio.h>
+
 #include "main.h"
 
 /**
- * print_buffer - prints the buffer in an array
- * @b: The array
- * @size: SIze of type
+ * print_buffer - print contents of a buffer.
+ * @b: pointer to the buffer.
+ * @size: size in bytes of the buffer.
  */
 void print_buffer(char *b, int size)
 {
-	int idx = 0, idy = 0;
+	int b_i = 0;
+	char printables[11];
 
-	while (b[idx] != '\0')
+	while (b_i < size)
 	{
-		idx++;
-	}
-
-	idx++;
-
-	printf("%08x: ", idy);
-	while (idx < size)
-	{
-		if (idx % 2)
-			printf("%02x%02x ", b[idx], b[idx + 1]);
-
-		if (!(idx % 10))
+		unsigned int p_i;
+		/* print index of every 10th byte. */
+		printf("%.08x: ", b_i);
+		for (p_i = 0; p_i < 10; ++p_i)
 		{
-			for (idy = idx - 10; idy <= idx; idy++)
-				if (b[idy] >= ' ' && b[idy] <= '~')
-					printf("%c", b[idy]);
-				else
-					putchar('.');
+			if (b_i >= size)
+			{
+				printf("  ");
+				printables[p_i] = '\0';
+				if (p_i % 2)
+					printf(" ");
 
-			printf("\n%08x: ", idy);
+				continue;
+			}
+
+			if (isprint(b[b_i]))
+				printables[p_i] = b[b_i];
+			else
+				printables[p_i] = '.';
+
+			printf("%.2x", b[b_i]);
+			/* add space after every 2 bytes */
+			if (p_i % 2)
+				printf(" ");
+
+			++b_i;
 		}
-		idx++;
+
+		printables[p_i] = '\0';
+		printf("%.11s", printables);
+		if (b_i < size)
+			printf("\n");
 	}
-	putchar('\n');
+
+	printf("\n");
 }
