@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-# Prints a string with a checksum of 2772.
-
-printf "dddddddddddddddddddddddddddH"
