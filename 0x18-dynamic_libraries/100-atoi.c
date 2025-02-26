@@ -28,9 +28,9 @@ int _atoi(char *s)
 	size_t i = 0;
 	unsigned char is_negative = 0;
 
-	while (s[i] && !_isdigit_hidden(s[i]))
+	while (*(s + i) && !_isdigit_hidden(*(s + i)))
 	{
-		if (s[i] == '-')
+		if (*(s + i) == '-')
 			is_negative = !is_negative;
 
 		i++;
@@ -39,9 +39,9 @@ int _atoi(char *s)
 	if (is_negative)
 		++max_val;
 
-	while (s[i] && _isdigit_hidden(s[i]) && output < max_val)
+	while (*(s + i) && _isdigit_hidden(*(s + i)) && output < max_val)
 	{
-		unsigned int tmp = (output * 10) + (s[i] - '0');
+		unsigned int tmp = (output * 10) + (*(s + i) - '0');
 
 		if (tmp > max_val)
 			break;
