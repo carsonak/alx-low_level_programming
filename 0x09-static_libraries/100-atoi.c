@@ -17,14 +17,14 @@ static unsigned char _isdigit_hidden(char c)
 }
 
 /**
- * _atoi - converts a string to an integer.
+ * _atoi - converts the initial digits in a string into an integer.
  * @s: the string with a number.
  *
  * Return: the integer in the string `s`.
  */
 int _atoi(char *s)
 {
-	unsigned int output = 0;
+	unsigned int output = 0, max_val = INT_MAX;
 	size_t i = 0;
 	unsigned char is_negative = 0;
 
@@ -36,12 +36,17 @@ int _atoi(char *s)
 		i++;
 	}
 
-	while (s[i] && _isdigit_hidden(s[i]))
+	if (is_negative)
+		++max_val;
+
+	while (s[i] && _isdigit_hidden(s[i]) && output < max_val)
 	{
-		if ((output * 10) + (s[i] - '0') > INT_MAX)
+		unsigned int tmp = (output * 10) + (s[i] - '0');
+
+		if (tmp > max_val)
 			break;
 
-		output = (output * 10) + (s[i] - '0');
+		output = tmp;
 		i++;
 	}
 
