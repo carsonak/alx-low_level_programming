@@ -6,7 +6,7 @@
 int rand(void)
 {
 	static int i;
-	int wining_numbers[] = {8, 74, 23, 9, 1, 9};
+	int wining_numbers[] = {8, 8, 7, -5, 9, 23};
 
 	++i;
 	return (wining_numbers[i - 1]);
