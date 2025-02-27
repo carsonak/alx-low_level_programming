@@ -6,7 +6,9 @@
 int rand(void)
 {
 	static int i;
-	int wining_numbers[] = {8, 8, 7, -5, 9, 23};
+	/* numbers should not repeat */
+	/* wining number = (rand() % 75) + 1 */
+	int wining_numbers[] = {8, 8 + 75, 7, 9, 74, 23};
 
 	++i;
 	return (wining_numbers[i - 1]);
